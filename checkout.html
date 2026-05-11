@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — Hamara Thrift Multan</title>
+  <meta name="description" content="Complete your order of premium second-hand sneakers from Hamara Thrift Multan.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="main-navbar navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand-custom" href="index.html">
+  
+        <img src="assets/images/hamara-thrift-logo.png" alt="Hamara Thrift" class="navbar-logo-img">
+      </a>
+      <div class="navbar-icons ms-auto">
+        <a href="cart.html" class="navbar-icon-btn" aria-label="Shopping cart">
+          <i class="bi bi-bag"></i>
+          <span class="cart-badge hidden" aria-live="polite">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ CHECKOUT HEADER ============ -->
+  <div class="shop-header">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-3" style="--bs-breadcrumb-divider-color:rgba(255,255,255,0.4)">
+          <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,0.6)">Home</a></li>
+          <li class="breadcrumb-item"><a href="cart.html" style="color:rgba(255,255,255,0.6)">Cart</a></li>
+          <li class="breadcrumb-item active" style="color:rgba(255,255,255,0.9)">Checkout</li>
+        </ol>
+      </nav>
+      <h1 class="mb-1"><span style="color:#a8a8ff">Checkout</span></h1>
+      <p style="color:rgba(255,255,255,0.6);margin:0">
+        <i class="bi bi-lock-fill me-1" style="color:var(--accent)"></i>
+        Secure checkout — your information stays private
+      </p>
+    </div>
+  </div>
+
+  <!-- ============ CHECKOUT FORM ============ -->
+  <div class="section-pad" style="background:var(--bg-light)">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- LEFT: Customer Form -->
+        <div class="col-lg-7">
+          <div class="checkout-form-card">
+            <div class="checkout-form-title">
+              <i class="bi bi-person-fill me-2" style="color:var(--primary)"></i>
+              Delivery Information
+            </div>
+
+            <form id="checkout-form" novalidate>
+              <div class="row g-3">
+
+                <div class="col-12">
+                  <label class="form-label-custom" for="co-name">Full Name <span style="color:#EF4444">*</span></label>
+                  <input type="text" class="form-control-custom" id="co-name" placeholder="e.g. Ahmed Khan" autocomplete="name" required aria-required="true">
+                  <div id="name-feedback" class="invalid-feedback" style="display:none;font-size:0.8rem;color:#EF4444;margin-top:4px">Please enter your full name.</div>
+                </div>
+
+                <div class="col-sm-6">
+                  <label class="form-label-custom" for="co-phone">Phone Number <span style="color:#EF4444">*</span></label>
+                  <input type="tel" class="form-control-custom" id="co-phone" placeholder="03001234567" autocomplete="tel" required aria-required="true">
+                  <div id="phone-feedback" style="display:none;font-size:0.8rem;color:#EF4444;margin-top:4px">Enter a valid Pakistani number.</div>
+                </div>
+
+                <div class="col-sm-6">
+                  <label class="form-label-custom" for="co-city">City <span style="color:#EF4444">*</span></label>
+                  <select class="form-control-custom" id="co-city" required aria-required="true">
+                    <option value="Multan" selected>Multan</option>
+                    <option value="Lahore">Lahore</option>
+                    <option value="Karachi">Karachi</option>
+                    <option value="Islamabad">Islamabad</option>
+                    <option value="Faisalabad">Faisalabad</option>
+                    <option value="Other">Other City</option>
+                  </select>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label-custom" for="co-address">Full Address <span style="color:#EF4444">*</span></label>
+                  <input type="text" class="form-control-custom" id="co-address" placeholder="Street, Block, Colony, Landmark..." autocomplete="street-address" required aria-required="true">
+                  <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">Include a landmark for faster delivery in Multan.</div>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label-custom" for="co-notes">Additional Notes (optional)</label>
+                  <textarea class="form-control-custom" id="co-notes" rows="3" placeholder="e.g. Please call before delivery, preferred time 5-8pm..." style="resize:vertical;min-height:80px"></textarea>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="col-12">
+                  <label class="form-label-custom">Payment Method <span style="color:#EF4444">*</span></label>
+                  <div class="d-flex flex-column gap-2 mt-1">
+                    <label style="display:flex;align-items:center;gap:12px;padding:14px 16px;border:1.5px solid var(--primary);border-radius:10px;cursor:pointer;background:rgba(6,6,68,0.04)">
+                      <input type="radio" name="payment" value="cod" checked class="form-check-input m-0" style="accent-color:var(--primary)">
+                      <span>
+                        <strong style="font-family:'Poppins',sans-serif;font-size:0.9rem">Cash on Delivery</strong>
+                        <span style="font-size:0.8rem;color:var(--text-muted);display:block">Pay when your order arrives</span>
+                      </span>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:12px;padding:14px 16px;border:1.5px solid var(--border);border-radius:10px;cursor:pointer">
+                      <input type="radio" name="payment" value="easypaisa" class="form-check-input m-0" style="accent-color:var(--primary)">
+                      <span>
+                        <strong style="font-family:'Poppins',sans-serif;font-size:0.9rem">EasyPaisa / JazzCash</strong>
+                        <span style="font-size:0.8rem;color:var(--text-muted);display:block">We'll send you payment details via WhatsApp</span>
+                      </span>
+                    </label>
+                  </div>
+                </div>
+
+              </div><!-- /row -->
+
+              <button type="submit" id="place-order-btn" class="btn-primary-brand w-100 justify-content-center mt-4" style="padding:18px;font-size:1.05rem">
+                <i class="bi bi-lock-fill"></i> Place Order
+              </button>
+
+              <p style="text-align:center;font-size:0.78rem;color:var(--text-muted);margin-top:12px">
+                By placing your order, you agree to our <a href="terms.html" style="color:var(--primary)">Terms & Conditions</a>
+              </p>
+
+            </form>
+          </div>
+        </div>
+
+        <!-- RIGHT: Order Summary -->
+        <div class="col-lg-5">
+          <div class="order-summary-card">
+            <div class="order-summary-header">
+              <i class="bi bi-cart-check me-2"></i>Order Summary
+            </div>
+            <div class="order-summary-body">
+
+              <!-- Items list -->
+              <div id="checkout-items-list">
+                <p class="text-muted text-center py-3" style="font-size:0.875rem">Loading cart...</p>
+              </div>
+
+              <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)">
+                <div class="summary-row">
+                  <span>Subtotal</span>
+                  <span id="co-subtotal">PKR 0</span>
+                </div>
+                <div class="summary-row">
+                  <span>Delivery (via TCS)</span>
+                  <span id="co-delivery">PKR 300</span>
+                </div>
+                <div class="summary-row" style="border-bottom:none;padding-top:0">
+                  <span style="font-size:0.8rem;color:var(--text-muted)">Est. Delivery</span>
+                  <span style="font-size:0.8rem;color:var(--accent);font-weight:600">3–4 Working Days</span>
+                </div>
+                <div class="summary-row total">
+                  <span>Total</span>
+                  <span class="amount" id="co-total">PKR 0</span>
+                </div>
+              </div>
+
+              <div style="margin-top:16px;background:var(--bg-light);border-radius:10px;padding:14px">
+                <div style="font-size:0.8rem;color:var(--text-muted)">
+                  <div class="d-flex gap-2 mb-2">
+                    <i class="bi bi-truck" style="color:var(--accent)"></i>
+                    <span>Delivery via <strong style="color:var(--text-dark)">TCS</strong> — PKR 250–400, est. <strong style="color:var(--text-dark)">3–4 working days</strong></span>
+                  </div>
+                  <div class="d-flex gap-2 mb-2">
+                    <i class="bi bi-arrow-repeat" style="color:var(--accent)"></i>
+                    <span><strong style="color:var(--text-dark)">3-day return</strong> policy — <a href="return-policy.html" style="color:var(--primary)">details</a></span>
+                  </div>
+                  <div class="d-flex gap-2">
+                    <i class="bi bi-headset" style="color:var(--accent)"></i>
+                    <span>Support available on <a href="https://wa.me/923001234567" target="_blank" style="color:var(--primary)">WhatsApp</a></span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ORDER SUCCESS MODAL ============ -->
+  <div class="modal fade" id="orderSuccessModal" tabindex="-1" aria-label="Order placed successfully" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0" style="border-radius:var(--radius-lg);overflow:hidden">
+        <div class="modal-body text-center p-5">
+          <div style="width:80px;height:80px;background:rgba(0,200,83,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:2.5rem">
+            ✅
+          </div>
+          <h2 style="font-family:'Poppins',sans-serif;font-size:1.6rem;font-weight:800;color:var(--text-dark);margin-bottom:8px">
+            Order Placed! 🎉
+          </h2>
+          <p style="color:var(--text-muted);margin-bottom:20px">
+            Thank you for shopping with Hamara Thrift Multan! Your order has been confirmed.
+          </p>
+          <div style="background:var(--bg-light);border-radius:10px;padding:16px 20px;margin-bottom:24px">
+            <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:4px">Order Number</div>
+            <div id="order-number" style="font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:800;color:var(--primary);letter-spacing:1px">
+              THRIFT-XXXXXXXX-XXXX
+            </div>
+          </div>
+          <p style="font-size:0.875rem;color:var(--text-muted);margin-bottom:24px">
+            We'll contact you on WhatsApp at the number you provided to confirm delivery details. <strong>Keep an eye on your phone!</strong>
+          </p>
+          <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="https://wa.me/923001234567" target="_blank" class="btn-primary-brand">
+              <i class="bi bi-whatsapp"></i> Chat with Us
+            </a>
+            <a href="shop.html" class="btn-outline-brand" onclick="document.getElementById('orderSuccessModal').style.display='none'">
+              Continue Shopping
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+    <footer class="main-footer" role="contentinfo">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <span class="footer-brand">Hamara Thrift</span>
+          <p class="footer-desc">Pakistan's premier pre-loved sneaker store — operated from Multan, delivering nationwide. Sustainable, affordable, and absolutely iconic.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com/hamarathriftmultan" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://facebook.com/hamarathriftmultan" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://tiktok.com/@hamarathriftmultan" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-sm-4 col-lg-2">
+          <h3 class="footer-heading">Shop</h3>
+          <ul class="footer-links">
+            <li><a href="shop.html">All Shoes</a></li>
+            <li><a href="shop.html?gender=Men">Men's</a></li>
+            <li><a href="shop.html?gender=Women">Women's</a></li>
+            <li><a href="shop.html?gender=Unisex">Unisex</a></li>
+            <li><a href="shop.html?condition=New">New Arrivals</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-4 col-lg-2">
+          <h3 class="footer-heading">Info</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="terms.html">Terms &amp; Privacy</a></li>
+            <li><a href="return-policy.html">Return Policy</a></li>
+            <li><a href="contact.html#faq">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-4 col-lg-4">
+          <h3 class="footer-heading">Contact Us</h3>
+          <ul class="footer-links">
+            <li><i class="bi bi-telephone me-2" aria-hidden="true"></i><a href="tel:+923001234567" class="footer-contact-link">+92 300 1234567</a></li>
+            <li><i class="bi bi-envelope me-2" aria-hidden="true"></i><a href="mailto:hello@hamarathrift.pk" class="footer-contact-link">hello@hamarathrift.pk</a></li>
+            <li><i class="bi bi-geo-alt me-2" aria-hidden="true"></i>Wapda Town, Multan</li>
+            <li class="mt-3">
+              <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" class="btn-primary-brand" style="font-size:0.85rem;padding:10px 20px">
+                <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Hamara Thrift Multan. All rights reserved.</span>
+        <span>Made with &#10084; in Multan, Pakistan</span>
+        <a href="terms.html" style="color:inherit">Terms &amp; Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container-custom" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script>
+    // Show phone feedback dynamically
+    document.getElementById('co-phone')?.addEventListener('input', function() {
+      const fb = document.getElementById('phone-feedback');
+      if (fb) fb.style.display = 'none';
+      this.classList.remove('is-invalid');
+    });
+    document.querySelectorAll('.form-control-custom').forEach(el => {
+      el.addEventListener('input', function() {
+        this.classList.remove('is-invalid');
+      });
+    });
+    // Payment selection highlight
+    document.querySelectorAll('input[name="payment"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        document.querySelectorAll('input[name="payment"]').forEach(r => {
+          r.closest('label').style.borderColor = 'var(--border)';
+        });
+        this.closest('label').style.borderColor = 'var(--primary)';
+      });
+    });
+  </script>
+</body>
+</html>

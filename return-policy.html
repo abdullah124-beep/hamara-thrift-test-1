@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Return Policy — Hamara Thrift</title>
+  <meta name="description" content="Hamara Thrift's 3-day return policy. If your shoes are not as described, we'll make it right.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="main-navbar navbar navbar-expand-lg" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand-custom" href="index.html" aria-label="Hamara Thrift Home">
+        <img src="assets/images/hamara-thrift-logo.png" alt="Hamara Thrift" class="navbar-logo-img">
+      </a>
+      <!-- Mobile-only: search + cart sit between logo and hamburger -->
+      <div class="d-flex d-lg-none align-items-center gap-1 ms-auto me-2">
+        <button class="navbar-icon-btn mobile-search-trigger" aria-label="Search" type="button">
+          <i class="bi bi-search" aria-hidden="true"></i>
+        </button>
+        <a href="cart.html" class="navbar-icon-btn" aria-label="Shopping cart">
+          <i class="bi bi-bag" aria-hidden="true"></i>
+          <span class="cart-badge hidden" aria-live="polite">0</span>
+        </a>
+      </div>
+
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="navbar-icons">
+          <div class="navbar-search d-none d-lg-block me-2">
+            <i class="bi bi-search search-icon" aria-hidden="true"></i>
+            <input type="search" placeholder="Search sneakers..." aria-label="Search products">
+          </div>
+          <a href="cart.html" class="navbar-icon-btn d-none d-lg-flex" aria-label="Shopping cart">
+            <i class="bi bi-bag" aria-hidden="true"></i>
+            <span class="cart-badge hidden" aria-live="polite">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ PAGE HEADER ============ -->
+  <div class="shop-header">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-3" style="--bs-breadcrumb-divider-color:rgba(255,255,255,0.4)">
+          <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,0.6)">Home</a></li>
+          <li class="breadcrumb-item active" style="color:rgba(255,255,255,0.9)">Return Policy</li>
+        </ol>
+      </nav>
+      <h1 class="mb-1">Return <span style="color:var(--accent)">Policy</span></h1>
+      <p style="color:rgba(255,255,255,0.6);margin:0">Simple, fair, and hassle-free returns within 3 days.</p>
+    </div>
+  </div>
+
+  <!-- ============ POLICY CONTENT ============ -->
+  <section class="section-pad" style="background:var(--bg-light)">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+          <!-- Quick Summary Cards -->
+          <div class="row g-3 mb-5">
+            <div class="col-sm-4">
+              <div style="background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center">
+                <div style="font-size:2rem;margin-bottom:8px">📅</div>
+                <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;margin-bottom:4px">3 Days</div>
+                <div style="font-size:0.8rem;color:var(--text-muted)">Return window from delivery</div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div style="background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center">
+                <div style="font-size:2rem;margin-bottom:8px">💬</div>
+                <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;margin-bottom:4px">WhatsApp Us</div>
+                <div style="font-size:0.8rem;color:var(--text-muted)">Start your return via chat</div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div style="background:var(--bg-white);border:1.5px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center">
+                <div style="font-size:2rem;margin-bottom:8px">✅</div>
+                <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem;margin-bottom:4px">Full Refund</div>
+                <div style="font-size:0.8rem;color:var(--text-muted)">Or exchange, your choice</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Policy Sections -->
+          <div style="background:var(--bg-white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px">
+
+            <h2 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:16px">
+              <i class="bi bi-shield-check me-2" style="color:var(--accent)"></i>Our Return Guarantee
+            </h2>
+            <p style="color:var(--text-muted);line-height:1.8;margin-bottom:24px">
+              At Hamara Thrift, we photograph and describe every pair with complete honesty. If something isn't right — if the shoe doesn't match what we showed you — we will make it right. No questions asked.
+            </p>
+
+            <hr style="border-color:var(--border);margin:28px 0">
+
+            <h2 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:16px">
+              <i class="bi bi-check-circle me-2" style="color:var(--accent)"></i>When You Can Return
+            </h2>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:12px">You are eligible for a return if <strong>all</strong> of the following apply:</p>
+            <ul style="color:var(--text-muted);line-height:2;font-size:0.9rem;padding-left:20px;margin-bottom:24px">
+              <li>You contact us within <strong>3 days</strong> of receiving the order.</li>
+              <li>The shoe's condition does not match what was listed and shown in photos.</li>
+              <li>The shoe has <strong>not been worn by you</strong> — it must be in the same condition as received.</li>
+              <li>The shoe has <strong>not been damaged by you</strong> — no new scuffs, stains, or alterations.</li>
+              <li>You have <strong>proof of purchase</strong> (order confirmation or WhatsApp conversation).</li>
+              <li>The shoe is returned with any original packaging or extras that came with it.</li>
+            </ul>
+
+            <hr style="border-color:var(--border);margin:28px 0">
+
+            <h2 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:16px">
+              <i class="bi bi-x-circle me-2" style="color:#EF4444"></i>When Returns Are Not Accepted
+            </h2>
+            <ul style="color:var(--text-muted);line-height:2;font-size:0.9rem;padding-left:20px;margin-bottom:24px">
+              <li>More than 3 days have passed since delivery.</li>
+              <li>The shoe has been worn or used by you after receiving it.</li>
+              <li>The shoe has been damaged, altered, or cleaned by you in a way that changes its condition.</li>
+              <li>You simply changed your mind (we sell one-of-a-kind pairs — please review listings carefully before ordering).</li>
+              <li>The issue was clearly described and shown in our listing photos and description.</li>
+              <li>The shoe was purchased during a final sale or marked as non-returnable at time of sale.</li>
+            </ul>
+
+            <hr style="border-color:var(--border);margin:28px 0">
+
+            <h2 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:16px">
+              <i class="bi bi-arrow-repeat me-2" style="color:var(--primary)"></i>How to Return
+            </h2>
+            <ol style="color:var(--text-muted);line-height:2.2;font-size:0.9rem;padding-left:20px;margin-bottom:24px">
+              <li><strong>Message us on WhatsApp</strong> within 3 days of delivery with your order details and photos of the issue.</li>
+              <li>We'll review and respond within 24 hours with instructions.</li>
+              <li>If approved, you'll send the shoe back via TCS. <strong>Return shipping costs are covered by Hamara Thrift</strong> if the issue is our fault.</li>
+              <li>Once we receive and inspect the returned pair, we'll issue a <strong>full refund</strong> or arrange an <strong>exchange</strong> — your choice.</li>
+            </ol>
+
+            <hr style="border-color:var(--border);margin:28px 0">
+
+            <h2 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:1.3rem;margin-bottom:16px">
+              <i class="bi bi-cash-coin me-2" style="color:var(--accent)"></i>Refunds
+            </h2>
+            <p style="color:var(--text-muted);line-height:1.8;font-size:0.9rem;margin-bottom:0">
+              Refunds are issued via the same payment method used for the order (EasyPaisa, JazzCash, or bank transfer). For Cash on Delivery orders, we'll transfer the amount directly to your EasyPaisa or JazzCash account. Refunds are processed within 2–3 business days of us receiving the returned item.
+            </p>
+
+          </div>
+
+          <!-- Contact CTA -->
+          <div style="background:var(--primary);border-radius:var(--radius-lg);padding:32px;text-align:center;margin-top:32px;color:#fff">
+            <h3 style="font-family:'Poppins',sans-serif;font-weight:800;margin-bottom:8px">Have a return request?</h3>
+            <p style="color:rgba(255,255,255,0.7);margin-bottom:20px">Message us on WhatsApp — we usually reply within 30 minutes.</p>
+            <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer"
+              class="btn-primary-brand" style="background:var(--accent);border-color:var(--accent);color:#fff;font-size:1rem;padding:14px 28px">
+              <i class="bi bi-whatsapp"></i> Start Return on WhatsApp
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="main-footer" role="contentinfo">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <span class="footer-brand">Hamara Thrift</span>
+          <p class="footer-desc">Pakistan's premier pre-loved sneaker store — operated from Multan, delivering nationwide. Sustainable, affordable, and absolutely iconic.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com/hamarathriftmultan" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://facebook.com/hamarathriftmultan" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://tiktok.com/@hamarathriftmultan" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-sm-4 col-lg-2">
+          <h3 class="footer-heading">Shop</h3>
+          <ul class="footer-links">
+            <li><a href="shop.html">All Shoes</a></li>
+            <li><a href="shop.html?gender=Men">Men's</a></li>
+            <li><a href="shop.html?gender=Women">Women's</a></li>
+            <li><a href="shop.html?gender=Unisex">Unisex</a></li>
+            <li><a href="shop.html?condition=New">New Arrivals</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-4 col-lg-2">
+          <h3 class="footer-heading">Info</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="terms.html">Terms &amp; Privacy</a></li>
+            <li><a href="return-policy.html">Return Policy</a></li>
+            <li><a href="contact.html#faq">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-4 col-lg-4">
+          <h3 class="footer-heading">Contact Us</h3>
+          <ul class="footer-links">
+            <li><i class="bi bi-telephone me-2" aria-hidden="true"></i><a href="tel:+923001234567" class="footer-contact-link">+92 300 1234567</a></li>
+            <li><i class="bi bi-envelope me-2" aria-hidden="true"></i><a href="mailto:hello@hamarathrift.pk" class="footer-contact-link">hello@hamarathrift.pk</a></li>
+            <li><i class="bi bi-geo-alt me-2" aria-hidden="true"></i>Wapda Town, Multan</li>
+            <li class="mt-3">
+              <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" class="btn-primary-brand" style="font-size:0.85rem;padding:10px 20px">
+                <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Hamara Thrift Multan. All rights reserved.</span>
+        <span>Made with &#10084; in Multan, Pakistan</span>
+        <a href="terms.html" style="color:inherit">Terms &amp; Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container-custom" aria-live="polite" aria-atomic="true"></div>
+  <button class="scroll-to-top" aria-label="Scroll to top"><i class="bi bi-arrow-up" aria-hidden="true"></i></button>
+  <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <i class="bi bi-whatsapp" aria-hidden="true"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

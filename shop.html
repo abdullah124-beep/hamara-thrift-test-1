@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All Sneakers — Hamara Thrift Multan</title>
+  <meta name="description" content="Browse all second-hand sneakers available in Multan. Filter by brand, size, gender, condition and price. Nike, Adidas, Jordan and more.">
+  <meta property="og:title" content="Shop All Sneakers — Hamara Thrift Multan">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="main-navbar navbar navbar-expand-lg" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand-custom" href="index.html" aria-label="Hamara Thrift Home">
+  
+        <img src="assets/images/hamara-thrift-logo.png" alt="Hamara Thrift" class="navbar-logo-img">
+      </a>
+      <!-- Mobile-only: search + cart sit between logo and hamburger -->
+      <div class="d-flex d-lg-none align-items-center gap-1 ms-auto me-2">
+        <button class="navbar-icon-btn mobile-search-trigger" aria-label="Search" type="button">
+          <i class="bi bi-search" aria-hidden="true"></i>
+        </button>
+        <a href="cart.html" class="navbar-icon-btn" aria-label="Shopping cart">
+          <i class="bi bi-bag" aria-hidden="true"></i>
+          <span class="cart-badge hidden" aria-live="polite">0</span>
+        </a>
+      </div>
+
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="shop.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="navbar-icons">
+          <div class="navbar-search d-none d-lg-block me-2">
+            <i class="bi bi-search search-icon"></i>
+            <input type="search" id="navbar-search" placeholder="Search sneakers..." aria-label="Search products">
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ SHOP HEADER ============ -->
+  <div class="shop-header">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-3" style="--bs-breadcrumb-divider-color:rgba(255,255,255,0.4)">
+          <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,0.6)">Home</a></li>
+          <li class="breadcrumb-item active" style="color:rgba(255,255,255,0.9)">Shop</li>
+        </ol>
+      </nav>
+      <h1 class="mb-1">All <span style="color:#a8a8ff">Sneakers</span></h1>
+      <p style="color:rgba(255,255,255,0.6);margin:0">Hand-picked second-hand shoes — every pair verified and graded honestly.</p>
+    </div>
+  </div>
+
+  <!-- ============ MAIN SHOP LAYOUT ============ -->
+  <div class="section-pad-sm" style="background:var(--bg-light)">
+    <div class="container">
+
+      <!-- Mobile Filter Toggle -->
+      <div class="d-lg-none mb-3">
+        <button class="btn-dark-brand w-100 justify-content-center" type="button" data-bs-toggle="collapse" data-bs-target="#mobileFilters" aria-expanded="false">
+          <i class="bi bi-funnel"></i> Filters &amp; Sort
+        </button>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- ============ SIDEBAR FILTERS ============ -->
+        <div class="col-lg-3">
+          <div class="collapse d-lg-block" id="mobileFilters">
+            <div class="filter-sidebar">
+              <div class="filter-sidebar-header">
+                <span><i class="bi bi-funnel me-2"></i>Filters</span>
+                <button id="clear-filters" class="btn btn-sm" style="color:var(--primary);background:transparent;border:none;font-size:0.8rem;font-weight:600;font-family:'Poppins',sans-serif;padding:0">
+                  Clear All
+                </button>
+              </div>
+
+              <!-- Gender -->
+              <div class="filter-section">
+                <div class="filter-section-title">Gender</div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-men" data-filter="gender" value="Men">
+                  <label class="form-check-label" for="f-men">Men</label>
+                </div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-women" data-filter="gender" value="Women">
+                  <label class="form-check-label" for="f-women">Women</label>
+                </div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-unisex" data-filter="gender" value="Unisex">
+                  <label class="form-check-label" for="f-unisex">Unisex</label>
+                </div>
+              </div>
+
+              <!-- Brands -->
+              <div class="filter-section">
+                <div class="filter-section-title">Brand</div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-nike" data-filter="brand" value="Nike">
+                  <label class="form-check-label" for="f-nike">Nike</label>
+                </div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-adidas" data-filter="brand" value="Adidas">
+                  <label class="form-check-label" for="f-adidas">Adidas</label>
+                </div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-jordan" data-filter="brand" value="Jordan">
+                  <label class="form-check-label" for="f-jordan">Jordan</label>
+                </div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-puma" data-filter="brand" value="Puma">
+                  <label class="form-check-label" for="f-puma">Puma</label>
+                </div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-newbalance" data-filter="brand" value="New Balance">
+                  <label class="form-check-label" for="f-newbalance">New Balance</label>
+                </div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-reebok" data-filter="brand" value="Reebok">
+                  <label class="form-check-label" for="f-reebok">Reebok</label>
+                </div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-vans" data-filter="brand" value="Vans">
+                  <label class="form-check-label" for="f-vans">Vans</label>
+                </div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-converse" data-filter="brand" value="Converse">
+                  <label class="form-check-label" for="f-converse">Converse</label>
+                </div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-asics" data-filter="brand" value="Asics">
+                  <label class="form-check-label" for="f-asics">Asics</label>
+                </div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-nb" data-filter="brand" value="New Balance">
+                  <label class="form-check-label" for="f-nb">NB (USA)</label>
+                </div>
+              </div>
+
+              <!-- Sizes -->
+              <div class="filter-section">
+                <div class="filter-section-title">US Size</div>
+                <div class="size-grid">
+                  <button class="size-btn" data-size="7">7</button>
+                  <button class="size-btn" data-size="8">8</button>
+                  <button class="size-btn" data-size="9">9</button>
+                  <button class="size-btn" data-size="10">10</button>
+                  <button class="size-btn" data-size="11">11</button>
+                  <button class="size-btn" data-size="12">12</button>
+                  <button class="size-btn" data-size="13">13</button>
+                </div>
+              </div>
+
+              <!-- Price Range -->
+              <div class="filter-section">
+                <div class="filter-section-title">Price Range (PKR)</div>
+                <div class="price-range-inputs">
+                  <input type="number" class="price-input" id="min-price" placeholder="Min" value="500" min="500" max="8000">
+                  <input type="number" class="price-input" id="max-price" placeholder="Max" value="8000" min="500" max="8000">
+                </div>
+                <small class="text-muted mt-1 d-block" style="font-size:0.75rem">PKR 500 — 8,000</small>
+              </div>
+
+              <!-- Condition -->
+              <div class="filter-section">
+                <div class="filter-section-title">Condition</div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-new" data-filter="condition" value="New">
+                  <label class="form-check-label" for="f-new">
+                    <span class="badge-condition condition-new me-1">New</span> Never worn
+                  </label>
+                </div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-excellent" data-filter="condition" value="Excellent">
+                  <label class="form-check-label" for="f-excellent">
+                    <span class="badge-condition condition-excellent me-1">Excellent</span> Light use
+                  </label>
+                </div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-good" data-filter="condition" value="Good">
+                  <label class="form-check-label" for="f-good">
+                    <span class="badge-condition condition-good me-1">Good</span> Normal wear
+                  </label>
+                </div>
+                <div class="filter-check form-check">
+                  <input class="form-check-input" type="checkbox" id="f-fair" data-filter="condition" value="Fair">
+                  <label class="form-check-label" for="f-fair">
+                    <span class="badge-condition condition-fair me-1">Fair</span> Heavy use
+                  </label>
+                </div>
+              </div>
+
+            </div><!-- /filter-sidebar -->
+          </div>
+        </div>
+
+        <!-- ============ PRODUCT GRID ============ -->
+        <div class="col-lg-9">
+
+          <!-- Toolbar -->
+          <div class="shop-toolbar">
+            <p class="shop-result-count mb-0">
+              Showing <strong id="result-count">0</strong> pairs
+            </p>
+            <select id="sort-select" class="sort-select" aria-label="Sort products">
+              <option value="default">Sort: Default</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="newest">Newest First</option>
+              
+            </select>
+          </div>
+
+          <!-- Products Grid -->
+          <div class="row row-cols-2 row-cols-md-2 row-cols-xl-3 g-4" id="products-grid">
+            <!-- Loading skeletons -->
+            <div class="col"><div class="skeleton-card"><div class="skeleton skeleton-img"></div><div class="skeleton skeleton-line medium"></div><div class="skeleton skeleton-line short"></div></div></div>
+            <div class="col"><div class="skeleton-card"><div class="skeleton skeleton-img"></div><div class="skeleton skeleton-line medium"></div><div class="skeleton skeleton-line short"></div></div></div>
+            <div class="col d-none d-md-block"><div class="skeleton-card"><div class="skeleton skeleton-img"></div><div class="skeleton skeleton-line medium"></div><div class="skeleton skeleton-line short"></div></div></div>
+          </div>
+
+          <!-- No Results -->
+          <div class="no-results" id="no-results" aria-live="polite">
+            <div class="no-results-icon">👟</div>
+            <h4 style="font-family:'Poppins',sans-serif;font-weight:700">No shoes found</h4>
+            <p>Try adjusting your filters to find more pairs.</p>
+            <button id="clear-filters-no-results" class="btn-primary-brand mt-2" onclick="clearFilters()">Clear Filters</button>
+          </div>
+
+          <!-- Load More -->
+          <div class="text-center mt-5">
+            <button id="load-more-btn" class="btn-outline-brand" style="display:none">
+              <i class="bi bi-arrow-down"></i> Load More
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+    <footer class="main-footer" role="contentinfo">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <span class="footer-brand">Hamara Thrift</span>
+          <p class="footer-desc">Pakistan's premier pre-loved sneaker store — operated from Multan, delivering nationwide. Sustainable, affordable, and absolutely iconic.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com/hamarathriftmultan" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://facebook.com/hamarathriftmultan" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://tiktok.com/@hamarathriftmultan" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-sm-4 col-lg-2">
+          <h3 class="footer-heading">Shop</h3>
+          <ul class="footer-links">
+            <li><a href="shop.html">All Shoes</a></li>
+            <li><a href="shop.html?gender=Men">Men's</a></li>
+            <li><a href="shop.html?gender=Women">Women's</a></li>
+            <li><a href="shop.html?gender=Unisex">Unisex</a></li>
+            <li><a href="shop.html?condition=New">New Arrivals</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-4 col-lg-2">
+          <h3 class="footer-heading">Info</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="terms.html">Terms &amp; Privacy</a></li>
+            <li><a href="return-policy.html">Return Policy</a></li>
+            <li><a href="contact.html#faq">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-4 col-lg-4">
+          <h3 class="footer-heading">Contact Us</h3>
+          <ul class="footer-links">
+            <li><i class="bi bi-telephone me-2" aria-hidden="true"></i><a href="tel:+923001234567" class="footer-contact-link">+92 300 1234567</a></li>
+            <li><i class="bi bi-envelope me-2" aria-hidden="true"></i><a href="mailto:hello@hamarathrift.pk" class="footer-contact-link">hello@hamarathrift.pk</a></li>
+            <li><i class="bi bi-geo-alt me-2" aria-hidden="true"></i>Wapda Town, Multan</li>
+            <li class="mt-3">
+              <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" class="btn-primary-brand" style="font-size:0.85rem;padding:10px 20px">
+                <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Hamara Thrift Multan. All rights reserved.</span>
+        <span>Made with &#10084; in Multan, Pakistan</span>
+        <a href="terms.html" style="color:inherit">Terms &amp; Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container-custom" aria-live="polite"></div>
+  <button class="scroll-to-top" aria-label="Scroll to top"><i class="bi bi-arrow-up"></i></button>
+  <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script>
+    // Apply URL query filters on load
+    document.addEventListener('DOMContentLoaded', function() {
+      const params = new URLSearchParams(window.location.search);
+      const gender = params.get('gender');
+      const brand = params.get('brand');
+      if (gender) {
+        const cb = document.querySelector(`[data-filter="gender"][value="${gender}"]`);
+        if (cb) { cb.checked = true; shopState.gender = [gender]; }
+      }
+      if (brand) {
+        const cb = document.querySelector(`[data-filter="brand"][value="${brand}"]`);
+        if (cb) { cb.checked = true; shopState.brands = [brand]; }
+      }
+    });
+  </script>
+</body>
+</html>

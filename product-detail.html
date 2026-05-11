@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail — Hamara Thrift Multan</title>
+  <meta name="description" content="View detailed product information, size selection, and purchase second-hand premium sneakers in Multan.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Product","name":"Premium Second-Hand Sneakers","brand":{"@type":"Brand","name":"Various"},"offers":{"@type":"Offer","priceCurrency":"PKR","availability":"https://schema.org/InStock","seller":{"@type":"LocalBusiness","name":"Hamara Thrift Multan"}}}
+  </script>
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="main-navbar navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand-custom" href="index.html">
+  
+        <img src="assets/images/hamara-thrift-logo.png" alt="Hamara Thrift" class="navbar-logo-img">
+      </a>
+      <!-- Mobile-only: search + cart sit between logo and hamburger -->
+      <div class="d-flex d-lg-none align-items-center gap-1 ms-auto me-2">
+        <button class="navbar-icon-btn mobile-search-trigger" aria-label="Search" type="button">
+          <i class="bi bi-search" aria-hidden="true"></i>
+        </button>
+        <a href="cart.html" class="navbar-icon-btn" aria-label="Shopping cart">
+          <i class="bi bi-bag" aria-hidden="true"></i>
+          <span class="cart-badge hidden" aria-live="polite">0</span>
+        </a>
+      </div>
+
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="shop.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ BREADCRUMB ============ -->
+  <div class="breadcrumb-custom">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+          <li class="breadcrumb-item active" id="pd-breadcrumb-title">Loading...</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ============ PRODUCT DETAIL ============ -->
+  <div id="product-detail-container" class="section-pad">
+    <div class="container">
+      <div class="row g-5">
+
+        <!-- LEFT: Gallery -->
+        <div class="col-lg-6">
+          <div class="product-gallery-main" id="pd-main-img-wrap" role="button" tabindex="0" aria-label="Click to enlarge image">
+            <img id="pd-main-img" src="https://picsum.photos/seed/product-main/600/600" alt="Product main image" loading="eager">
+          </div>
+          <div class="product-thumbnails" id="pd-thumbnails">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- RIGHT: Product Info -->
+        <div class="col-lg-6">
+
+          <!-- Brand + badges -->
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <span id="pd-brand" class="product-card-brand" style="font-size:0.85rem"></span>
+            <span id="pd-condition-badge" class="badge-condition condition-excellent"></span>
+          </div>
+
+          <h1 class="product-detail-title" id="pd-title">Loading...</h1>
+
+          <div id="pd-price" class="product-detail-price">PKR —</div>
+
+          <!-- Stock -->
+          <div id="pd-stock" class="stock-badge in-stock mb-4">
+            <span class="stock-dot"></span> In Stock
+          </div>
+
+          <!-- Details row -->
+          <div class="product-detail-info-row mb-4">
+            <div class="info-row-item">
+              <span class="label">Brand</span>
+              <span class="value" id="pd-brand-detail">—</span>
+            </div>
+            <div class="info-row-item">
+              <span class="label">Gender</span>
+              <span class="value" id="pd-gender">—</span>
+            </div>
+            <div class="info-row-item">
+              <span class="label">Original Size</span>
+              <span class="value" id="pd-size-display">—</span>
+            </div>
+            <div class="info-row-item">
+              <span class="label">Condition</span>
+              <span class="value" id="pd-condition">—</span>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <p class="product-desc mb-4" id="pd-description">Loading product details...</p>
+
+          <!-- Size Selector -->
+          <div class="mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <label class="fw-bold" style="font-family:'Poppins',sans-serif;font-size:0.9rem">Select Size (US)</label>
+              <a href="#" style="font-size:0.8rem;color:var(--primary)">Size Guide <i class="bi bi-rulers"></i></a>
+            </div>
+            <div class="size-selector" id="pd-size-selector">
+              <!-- Populated by JS -->
+            </div>
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:8px">
+              <i class="bi bi-info-circle"></i> Original size pre-selected. Other sizes are for reference only.
+            </p>
+          </div>
+
+          <!-- Quantity -->
+          <div class="mb-4">
+            <label class="fw-bold d-block mb-2" style="font-family:'Poppins',sans-serif;font-size:0.9rem">Quantity</label>
+            <div class="qty-selector">
+              <button class="qty-btn" id="qty-minus" aria-label="Decrease quantity">−</button>
+              <input type="text" class="qty-value" id="qty-value" value="1" readonly aria-label="Quantity">
+              <button class="qty-btn" id="qty-plus" aria-label="Increase quantity">+</button>
+            </div>
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:6px">Maximum 5 per order</p>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="d-flex gap-3 flex-wrap mb-4">
+            <button id="pd-add-to-cart" class="btn-primary-brand flex-grow-1 justify-content-center" style="padding:16px 24px;font-size:1rem;min-height:52px">
+              <i class="bi bi-bag-plus"></i> Add to Cart
+            </button>
+            <button class="product-card-wishlist" style="position:static;width:52px;height:52px;border:1.5px solid var(--border)" aria-label="Add to wishlist">
+              <i class="bi bi-heart"></i>
+            </button>
+          </div>
+
+          <!-- Delivery info -->
+          <div style="background:var(--bg-light);border-radius:var(--radius);padding:16px;font-size:0.875rem">
+            <div class="d-flex gap-3 mb-2">
+              <i class="bi bi-truck" style="color:var(--primary);font-size:1.1rem"></i>
+              <div>
+                <strong style="font-family:'Poppins',sans-serif">Free delivery in Multan</strong>
+                <span style="color:var(--text-muted)"> — Same day if ordered before 2pm</span>
+              </div>
+            </div>
+            <div class="d-flex gap-3 mb-2">
+              <i class="bi bi-arrow-repeat" style="color:var(--primary);font-size:1.1rem"></i>
+              <div>
+                <strong style="font-family:'Poppins',sans-serif">7-day returns</strong>
+                <span style="color:var(--text-muted)"> — Hassle-free returns if not as described</span>
+              </div>
+            </div>
+            <div class="d-flex gap-3">
+              <i class="bi bi-shield-check" style="color:var(--primary);font-size:1.1rem"></i>
+              <div>
+                <strong style="font-family:'Poppins',sans-serif">Authenticity verified</strong>
+                <span style="color:var(--text-muted)"> — Every pair is authenticated by our team</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Share -->
+          <div class="d-flex align-items-center gap-3 mt-4">
+            <span style="font-size:0.85rem;color:var(--text-muted);font-weight:600;font-family:'Poppins',sans-serif">Share:</span>
+            <div class="share-buttons">
+              <button class="share-btn" aria-label="Share on WhatsApp" onclick="navigator.share ? navigator.share({title:document.title,url:location.href}) : window.open('https://wa.me/?text='+encodeURIComponent(document.title+' '+location.href))">
+                <i class="bi bi-whatsapp"></i>
+              </button>
+              <button class="share-btn" aria-label="Copy link" onclick="navigator.clipboard.writeText(location.href);Toast.show('Link copied!','info')">
+                <i class="bi bi-link-45deg"></i>
+              </button>
+              <button class="share-btn" aria-label="Share on Facebook" onclick="window.open('https://facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href))">
+                <i class="bi bi-facebook"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============ YOU MAY ALSO LIKE ============ -->
+      <div class="mt-5 pt-5" style="border-top:1px solid var(--border)">
+        <h2 class="section-title mb-4 reveal">You May Also <span style="color:var(--primary)">Like</span></h2>
+        <div class="row row-cols-2 row-cols-md-4 g-4" id="related-products">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============ LIGHTBOX MODAL ============ -->
+  <div class="modal fade" id="lightboxModal" tabindex="-1" aria-label="Image lightbox" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0 pb-0" style="background:rgba(0,0,0,0.95)">
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center" style="background:rgba(0,0,0,0.95);padding:16px">
+          <img id="lightbox-img" src="" alt="Full size product image" style="max-width:100%;max-height:80vh;border-radius:8px;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+    <footer class="main-footer" role="contentinfo">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <span class="footer-brand">Hamara Thrift</span>
+          <p class="footer-desc">Pakistan's premier pre-loved sneaker store — operated from Multan, delivering nationwide. Sustainable, affordable, and absolutely iconic.</p>
+          <div class="footer-social">
+            <a href="https://instagram.com/hamarathriftmultan" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://facebook.com/hamarathriftmultan" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://tiktok.com/@hamarathriftmultan" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-sm-4 col-lg-2">
+          <h3 class="footer-heading">Shop</h3>
+          <ul class="footer-links">
+            <li><a href="shop.html">All Shoes</a></li>
+            <li><a href="shop.html?gender=Men">Men's</a></li>
+            <li><a href="shop.html?gender=Women">Women's</a></li>
+            <li><a href="shop.html?gender=Unisex">Unisex</a></li>
+            <li><a href="shop.html?condition=New">New Arrivals</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-4 col-lg-2">
+          <h3 class="footer-heading">Info</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="terms.html">Terms &amp; Privacy</a></li>
+            <li><a href="return-policy.html">Return Policy</a></li>
+            <li><a href="contact.html#faq">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-4 col-lg-4">
+          <h3 class="footer-heading">Contact Us</h3>
+          <ul class="footer-links">
+            <li><i class="bi bi-telephone me-2" aria-hidden="true"></i><a href="tel:+923001234567" class="footer-contact-link">+92 300 1234567</a></li>
+            <li><i class="bi bi-envelope me-2" aria-hidden="true"></i><a href="mailto:hello@hamarathrift.pk" class="footer-contact-link">hello@hamarathrift.pk</a></li>
+            <li><i class="bi bi-geo-alt me-2" aria-hidden="true"></i>Wapda Town, Multan</li>
+            <li class="mt-3">
+              <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" class="btn-primary-brand" style="font-size:0.85rem;padding:10px 20px">
+                <i class="bi bi-whatsapp"></i> Chat on WhatsApp
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Hamara Thrift Multan. All rights reserved.</span>
+        <span>Made with &#10084; in Multan, Pakistan</span>
+        <a href="terms.html" style="color:inherit">Terms &amp; Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container-custom" aria-live="polite"></div>
+  <button class="scroll-to-top" aria-label="Scroll to top"><i class="bi bi-arrow-up"></i></button>
+  <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/script.js"></script>
+  <script>
+    // Sync pd-brand-detail
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        const brandEl = document.getElementById('pd-brand');
+        const brandDetailEl = document.getElementById('pd-brand-detail');
+        if (brandEl && brandDetailEl) brandDetailEl.textContent = brandEl.textContent;
+      }, 100);
+    });
+  </script>
+</body>
+</html>
