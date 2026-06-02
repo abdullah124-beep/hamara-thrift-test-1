@@ -30,12 +30,11 @@
 </head>
 <body>
 
-  <!-- ============ NAVBAR ============ -->
+    <!-- ============ NAVBAR ============ -->
   <nav class="main-navbar navbar navbar-expand-lg" role="navigation" aria-label="Main navigation">
     <div class="container">
       <a class="navbar-brand-custom" href="index.html" aria-label="Hamara Thrift Home">
-        
-        <img src="assets/images/hamara-thrift-logo.png" alt="Hamara Thrift — سب تمھارا" class="navbar-logo-img">
+        <img src="assets/images/hamara-thrift-logo.png" alt="Hamara Thrift" class="navbar-logo-img">
       </a>
 
       <!-- Mobile-only: search + cart sit between logo and hamburger -->
@@ -55,12 +54,11 @@
 
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav mx-auto gap-1">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
-
         <div class="navbar-icons">
           <div class="navbar-search d-none d-lg-block me-2">
             <i class="bi bi-search search-icon" aria-hidden="true"></i>
@@ -144,10 +142,6 @@
         </div>
       </div>
     </div>
-
-    <div class="scroll-indicator" aria-hidden="true">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
     </div>
   </section>
 
@@ -226,10 +220,10 @@
           </div>
 
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev" aria-label="Previous slide">
+        <button class="carousel-control-prev featured-carousel-btn" type="button" data-bs-target="#featuredCarousel" data-bs-slide="prev" aria-label="Previous slide">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next" aria-label="Next slide">
+        <button class="carousel-control-next featured-carousel-btn" type="button" data-bs-target="#featuredCarousel" data-bs-slide="next" aria-label="Next slide">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </button>
       </div>
@@ -483,25 +477,49 @@
           </div>
         </div>
 
-        <div class="d-flex justify-content-center gap-2 mt-4">
-          <button class="carousel-control-prev position-static w-auto h-auto" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev" style="background:rgba(255,255,255,0.15);border-radius:50%;width:44px!important;height:44px!important;" aria-label="Previous testimonial">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <div class="testimonials-nav">
+          <button class="tm-nav-btn" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev" aria-label="Previous testimonial">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i>
           </button>
-          <button class="carousel-control-next position-static w-auto h-auto" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next" style="background:rgba(255,255,255,0.15);border-radius:50%;width:44px!important;height:44px!important;" aria-label="Next testimonial">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <button class="tm-nav-btn" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next" aria-label="Next testimonial">
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
           </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ INSTAGRAM / SOCIAL PROOF ============ -->
-  <section class="section-pad" aria-label="Social media gallery">
+  <!-- ============ COMMUNITY ============ -->
+  <section class="section-pad" aria-label="Join our community">
     <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="section-title reveal">Follow <span style="color:var(--primary)">@hamarathriftmultan</span></h2>
-        <p class="section-subtitle mx-auto reveal reveal-delay-1">Join the community on Instagram. Real fits, real vibes, real Multan.</p>
+      <div class="text-center mb-4">
+        <p class="section-eyebrow reveal">Be Part of It</p>
+        <h2 class="section-title reveal">Join Our <span style="color:#a8a8ff">Community</span></h2>
+        <p class="section-subtitle mx-auto reveal reveal-delay-1">We're building Multan's sneaker community. Follow us on Instagram for drops and fits — and join our WhatsApp group where most of our customers shop directly.</p>
       </div>
+      <div class="row g-4 justify-content-center mb-5">
+        <div class="col-md-5">
+          <div class="community-card community-card-ig">
+            <div class="community-card-icon"><i class="bi bi-instagram"></i></div>
+            <h3 class="community-card-title">Follow on Instagram</h3>
+            <p class="community-card-body">Drop notifications, real customer fits, and behind-the-scenes from our curation process.</p>
+            <a href="https://instagram.com/hamarathriftmultan" target="_blank" rel="noopener noreferrer" class="community-card-btn community-btn-ig">
+              <i class="bi bi-instagram"></i> @hamarathriftmultan
+            </a>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="community-card community-card-wa">
+            <div class="community-card-icon"><i class="bi bi-whatsapp"></i></div>
+            <h3 class="community-card-title">Join WhatsApp Group</h3>
+            <p class="community-card-body">New pairs posted here first — grab them before they hit the website. Most active buyers are already here.</p>
+            <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" class="community-card-btn community-btn-wa">
+              <i class="bi bi-whatsapp"></i> Join the Group
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mb-4" style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600">Recent Posts</div>
       <div class="insta-grid reveal">
         <div class="insta-item">
           <img src="https://picsum.photos/seed/insta-1/300/300" alt="Instagram post 1" loading="lazy">
@@ -583,7 +601,7 @@
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="terms.html">Terms &amp; Privacy</a></li>
-            <li><a href="return-policy.html">Return Policy</a></li>
+            <li><a href="exchange-policy.html">Exchange Policy</a></li>
             <li><a href="contact.html#faq">FAQs</a></li>
           </ul>
         </div>
@@ -602,10 +620,8 @@
         </div>
       </div>
 
-      <div class="footer-bottom">
+      <div class="footer-bottom" style="justify-content:center;text-align:center">
         <span>&copy; 2026 Hamara Thrift Multan. All rights reserved.</span>
-        <span>Made with &#10084; in Multan, Pakistan</span>
-        <a href="terms.html" style="color:inherit">Terms &amp; Privacy</a>
       </div>
     </div>
   </footer>

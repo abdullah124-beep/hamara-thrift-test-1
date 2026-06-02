@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Page — Hamara Thrift Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+<div class="admin-layout">  <aside class="sidebar">
+    <div class="sidebar-brand"><div class="sidebar-logo">HT</div><div><div class="sidebar-brand-name">Hamara Thrift</div><div class="sidebar-brand-sub">Admin Panel</div></div></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <div class="nav-item" data-page="dashboard.html"><i class="bi bi-grid-1x2"></i> Dashboard</div>
+      <div class="nav-item" data-page="products.html"><i class="bi bi-box-seam"></i> Products</div>
+      <div class="nav-item" data-page="orders.html"><i class="bi bi-bag-check"></i> Orders</div>
+      <div class="nav-section-label">Content</div>
+      <div class="nav-item" data-page="content-home.html"><i class="bi bi-house"></i> Home Page</div>
+      <div class="nav-item" data-page="content-about.html"><i class="bi bi-person-lines-fill"></i> About Page</div>
+      <div class="nav-item" data-page="content-contact.html"><i class="bi bi-telephone"></i> Contact Page</div>
+      <div class="nav-item" data-page="content-shop.html"><i class="bi bi-bag"></i> Shop Page</div>
+      <div class="nav-item" data-page="content-settings.html"><i class="bi bi-gear"></i> Settings</div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-avatar">A</div>
+      <div><div class="sidebar-user-name">Abdullah</div><div class="sidebar-user-role">Owner</div></div>
+      <button class="sidebar-logout" title="Sign out"><i class="bi bi-box-arrow-right"></i></button>
+    </div>
+  </aside>
+  <div class="sidebar-overlay"></div>
+  <div class="main-content">
+    <div class="topbar">
+      <button class="topbar-toggle"><i class="bi bi-list"></i></button>
+      <span class="topbar-title">Contact Page Content</span>
+      <div class="topbar-right"><a href="../contact.html" target="_blank" class="topbar-store-link"><i class="bi bi-arrow-up-right-square"></i> Preview</a></div>
+    </div>
+    <div class="page-content">
+      <div class="page-header">
+        <div class="page-header-left"><h1>Contact Page Content</h1><p>Edit all text on the contact page including FAQs.</p></div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-outline" id="btn-reset"><i class="bi bi-arrow-counterclockwise"></i> Reset</button>
+          <button class="btn btn-primary" id="btn-save"><i class="bi bi-check-lg"></i> Save All</button>
+        </div>
+      </div>
+      <div class="content-sections">
+
+        <!-- HERO -->
+        <div class="section-block">
+          <div class="section-block-header" onclick="toggleSection(this)"><div class="section-block-title"><i class="bi bi-image" style="color:var(--primary)"></i> ① Page Hero</div><i class="bi bi-chevron-down toggle-chevron"></i></div>
+          <div class="section-block-body">
+            <div class="field-group"><label class="field-label">H1 Heading (e.g. "Get in Touch")</label><input type="text" class="field-input" id="c-hero-heading"></div>
+          </div>
+        </div>
+
+        <!-- CONTACT DETAILS -->
+        <div class="section-block">
+          <div class="section-block-header" onclick="toggleSection(this)"><div class="section-block-title"><i class="bi bi-telephone" style="color:var(--accent)"></i> ② Contact Details Card</div><i class="bi bi-chevron-down toggle-chevron"></i></div>
+          <div class="section-block-body">
+            <div class="field-row field-row-2">
+              <div class="field-group"><label class="field-label">Phone Number</label><input type="text" class="field-input" id="c-phone"></div>
+              <div class="field-group"><label class="field-label">WhatsApp Number (digits only)</label><input type="text" class="field-input" id="c-whatsapp"><p class="field-hint">e.g. 923001234567 (no + or spaces)</p></div>
+            </div>
+            <div class="field-row field-row-2">
+              <div class="field-group"><label class="field-label">Email Address</label><input type="email" class="field-input" id="c-email"></div>
+              <div class="field-group"><label class="field-label">Address</label><input type="text" class="field-input" id="c-address"></div>
+            </div>
+            <div class="field-group"><label class="field-label">Business Hours</label><input type="text" class="field-input" id="c-hours"></div>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="section-block">
+          <div class="section-block-header" onclick="toggleSection(this)"><div class="section-block-title"><i class="bi bi-question-circle" style="color:#7c3aed"></i> ③ FAQ Section (4 questions)</div><i class="bi bi-chevron-down toggle-chevron"></i></div>
+          <div class="section-block-body">
+            <div class="field-group"><label class="field-label">Section Heading</label><input type="text" class="field-input" id="c-faq-heading"></div>
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
+              <div style="border:1px solid var(--border);border-radius:var(--radius);padding:14px">
+                <p style="font-size:0.72rem;font-weight:700;color:var(--text-2);text-transform:uppercase;margin-bottom:8px">FAQ 1</p>
+                <div class="field-group" style="margin-bottom:8px"><label class="field-label">Question</label><input type="text" class="field-input" id="c-faq1q"></div>
+                <div class="field-group" style="margin-bottom:0"><label class="field-label">Answer</label><textarea class="field-textarea" id="c-faq1a" rows="2"></textarea></div>
+              </div>
+              <div style="border:1px solid var(--border);border-radius:var(--radius);padding:14px">
+                <p style="font-size:0.72rem;font-weight:700;color:var(--text-2);text-transform:uppercase;margin-bottom:8px">FAQ 2</p>
+                <div class="field-group" style="margin-bottom:8px"><label class="field-label">Question</label><input type="text" class="field-input" id="c-faq2q"></div>
+                <div class="field-group" style="margin-bottom:0"><label class="field-label">Answer</label><textarea class="field-textarea" id="c-faq2a" rows="2"></textarea></div>
+              </div>
+              <div style="border:1px solid var(--border);border-radius:var(--radius);padding:14px">
+                <p style="font-size:0.72rem;font-weight:700;color:var(--text-2);text-transform:uppercase;margin-bottom:8px">FAQ 3</p>
+                <div class="field-group" style="margin-bottom:8px"><label class="field-label">Question</label><input type="text" class="field-input" id="c-faq3q"></div>
+                <div class="field-group" style="margin-bottom:0"><label class="field-label">Answer</label><textarea class="field-textarea" id="c-faq3a" rows="2"></textarea></div>
+              </div>
+              <div style="border:1px solid var(--border);border-radius:var(--radius);padding:14px">
+                <p style="font-size:0.72rem;font-weight:700;color:var(--text-2);text-transform:uppercase;margin-bottom:8px">FAQ 4</p>
+                <div class="field-group" style="margin-bottom:8px"><label class="field-label">Question</label><input type="text" class="field-input" id="c-faq4q"></div>
+                <div class="field-group" style="margin-bottom:0"><label class="field-label">Answer</label><textarea class="field-textarea" id="c-faq4a" rows="2"></textarea></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="toast-stack"></div>
+<script src="assets/js/admin.js"></script>
+<script>
+  requireAuth();
+  initSidebar('content-contact.html');
+  function toggleSection(h){const b=h.nextElementSibling,c=h.querySelector('.toggle-chevron'),open=!b.classList.contains('hidden');b.classList.toggle('hidden',open);c.style.transform=open?'rotate(-90deg)':'rotate(0)';}
+  const FIELDS={
+    'c-hero-heading':['contact','heroHeading'],
+    'c-phone':['contact','phone'],'c-whatsapp':['contact','whatsapp'],
+    'c-email':['contact','email'],'c-address':['contact','address'],'c-hours':['contact','hours'],
+    'c-faq-heading':['contact','faqHeading'],
+    'c-faq1q':['contact','faq1Q'],'c-faq1a':['contact','faq1A'],
+    'c-faq2q':['contact','faq2Q'],'c-faq2a':['contact','faq2A'],
+    'c-faq3q':['contact','faq3Q'],'c-faq3a':['contact','faq3A'],
+    'c-faq4q':['contact','faq4Q'],'c-faq4a':['contact','faq4A'],
+  };
+  function g(o,k){return k.reduce((a,b)=>(a&&a[b]!==undefined?a[b]:''),o);}
+  function s(o,k,v){const l=k[k.length-1];k.slice(0,-1).reduce((a,b)=>{if(!a[b])a[b]={};return a[b];},o)[l]=v;}
+  function loadAll(){const c=Store.getContent();Object.entries(FIELDS).forEach(([id,path])=>{const el=document.getElementById(id);if(el)el.value=g(c,path);});}
+  document.getElementById('btn-save').addEventListener('click',()=>{const c=Store.getContent();Object.entries(FIELDS).forEach(([id,path])=>{const el=document.getElementById(id);if(el)s(c,path,el.value.trim());});Store.saveContent(c);AdminToast.show('Contact page saved!','success');});
+  document.getElementById('btn-reset').addEventListener('click',()=>{if(!confirm('Reset contact page content?'))return;const c=Store.getContent();c.contact=Store._defaultContent().contact;Store.saveContent(c);loadAll();AdminToast.show('Reset to defaults.','success');});
+  loadAll();
+</script>
+</body>
+</html>

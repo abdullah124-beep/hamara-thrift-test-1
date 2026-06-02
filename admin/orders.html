@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders — Hamara Thrift Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">HT</div>
+      <div><div class="sidebar-brand-name">Hamara Thrift</div><div class="sidebar-brand-sub">Admin Panel</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <div class="nav-item" data-page="dashboard.html"><i class="bi bi-grid-1x2"></i> Dashboard</div>
+      <div class="nav-item" data-page="products.html"><i class="bi bi-box-seam"></i> Products</div>
+      <div class="nav-item" data-page="orders.html"><i class="bi bi-bag-check"></i> Orders</div>
+      <div class="nav-section-label">Content</div>
+      <div class="nav-item" data-page="content-home.html"><i class="bi bi-house"></i> Home Page</div>
+      <div class="nav-item" data-page="content-about.html"><i class="bi bi-person-lines-fill"></i> About Page</div>
+      <div class="nav-item" data-page="content-contact.html"><i class="bi bi-telephone"></i> Contact Page</div>
+      <div class="nav-item" data-page="content-shop.html"><i class="bi bi-bag"></i> Shop Page</div>
+      <div class="nav-item" data-page="content-settings.html"><i class="bi bi-gear"></i> Settings</div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-avatar">A</div>
+      <div><div class="sidebar-user-name">Abdullah</div><div class="sidebar-user-role">Owner</div></div>
+      <button class="sidebar-logout" title="Sign out"><i class="bi bi-box-arrow-right"></i></button>
+    </div>
+  </aside>
+  <div class="sidebar-overlay"></div>
+
+  <div class="main-content">
+    <div class="topbar">
+      <button class="topbar-toggle"><i class="bi bi-list"></i></button>
+      <span class="topbar-title">Orders</span>
+      <div class="topbar-right"></div>
+    </div>
+    <div class="page-content">
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1>Orders</h1>
+          <p>Placeholder — real orders will come from Laravel backend.</p>
+        </div>
+        <button class="btn btn-outline" id="btn-add-order"><i class="bi bi-plus-lg"></i> Add Sample Order</button>
+      </div>
+
+      <!-- Status filter tabs -->
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px" id="status-tabs">
+        <button class="btn btn-primary btn-sm status-tab" data-status="">All</button>
+        <button class="btn btn-outline btn-sm status-tab" data-status="pending">Pending</button>
+        <button class="btn btn-outline btn-sm status-tab" data-status="shipped">Shipped</button>
+        <button class="btn btn-outline btn-sm status-tab" data-status="delivered">Delivered</button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title" id="orders-count">All Orders</span>
+        </div>
+        <div class="table-wrap">
+          <table id="orders-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>City</th>
+                <th>Product</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th style="text-align:right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="orders-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div style="margin-top:20px;padding:18px;background:var(--warning-lt);border:1px solid #fbbf24;border-radius:var(--radius-lg)">
+        <p style="font-size:0.875rem;color:#92400e"><i class="bi bi-info-circle me-2"></i>
+          <strong>Note:</strong> Orders shown here are sample data. When you move to Laravel, this page will connect to your real orders database. Status changes here are saved locally and won't affect anything else yet.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Order status modal -->
+<div class="modal-backdrop" id="order-modal">
+  <div class="modal" style="max-width:460px">
+    <div class="modal-header">
+      <span class="modal-title">Update Order Status</span>
+      <button class="modal-close" onclick="Modal.close('order-modal')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div id="order-detail-info" style="background:var(--bg);border-radius:var(--radius);padding:14px;margin-bottom:16px;font-size:0.875rem;line-height:1.8"></div>
+      <input type="hidden" id="order-edit-id">
+      <div class="field-group">
+        <label class="field-label">Status</label>
+        <select class="field-select" id="order-status-sel">
+          <option value="pending">Pending — not dispatched yet</option>
+          <option value="shipped">Shipped — dispatched via TCS</option>
+          <option value="delivered">Delivered — customer received</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label class="field-label">Tracking Number (optional)</label>
+        <input type="text" class="field-input" id="order-tracking" placeholder="TCS tracking number">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="Modal.close('order-modal')">Cancel</button>
+      <button class="btn btn-primary" id="save-order-status"><i class="bi bi-check-lg"></i> Update Status</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack"></div>
+<script src="assets/js/admin.js"></script>
+<script>
+  requireAuth();
+  initSidebar('orders.html');
+
+  let activeStatus = '';
+
+  const statusConfig = {
+    pending:   { label:'Pending',   cls:'badge-good',    color:'#d97706' },
+    shipped:   { label:'Shipped',   cls:'badge-excellent',color:'#2563eb' },
+    delivered: { label:'Delivered', cls:'badge-new',     color:'#059669' },
+    cancelled: { label:'Cancelled', cls:'badge-fair',    color:'#dc2626' },
+  };
+
+  function renderOrders() {
+    let orders = Store.getOrders();
+    if (activeStatus) orders = orders.filter(o => o.status === activeStatus);
+    document.getElementById('orders-count').textContent = `${orders.length} Order${orders.length !== 1 ? 's' : ''}`;
+    document.getElementById('orders-tbody').innerHTML = orders.length ? orders.map(o => {
+      const s = statusConfig[o.status] || statusConfig.pending;
+      return `<tr>
+        <td><strong>${esc(o.id)}</strong></td>
+        <td>${esc(o.customer)}</td>
+        <td>${esc(o.city)}</td>
+        <td style="max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(o.product)}</td>
+        <td style="white-space:nowrap;font-weight:600">${formatPrice(o.price)}</td>
+        <td style="white-space:nowrap;color:var(--text-2)">${o.date}</td>
+        <td><span class="badge ${s.cls}">${s.label}</span>${o.tracking ? `<br><small style="color:var(--text-3)">${esc(o.tracking)}</small>` : ''}</td>
+        <td>
+          <div style="display:flex;justify-content:flex-end;gap:6px">
+            <button class="btn btn-outline btn-sm btn-icon" onclick="openOrderModal('${esc(o.id)}')" title="Update Status">
+              <i class="bi bi-pencil"></i>
+            </button>
+          </div>
+        </td>
+      </tr>`;
+    }).join('') : `<tr><td colspan="8" style="text-align:center;padding:32px;color:var(--text-3)">No orders found.</td></tr>`;
+  }
+
+  function openOrderModal(id) {
+    const o = Store.getOrders().find(x => x.id === id);
+    if (!o) return;
+    document.getElementById('order-edit-id').value = id;
+    document.getElementById('order-status-sel').value = o.status;
+    document.getElementById('order-tracking').value = o.tracking || '';
+    document.getElementById('order-detail-info').innerHTML = `
+      <strong>${esc(o.id)}</strong> — ${esc(o.customer)}, ${esc(o.city)}<br>
+      ${esc(o.product)}<br>
+      <span style="color:var(--text-3)">${formatPrice(o.price)} · ${o.date}</span>`;
+    Modal.open('order-modal');
+  }
+
+  document.getElementById('save-order-status').addEventListener('click', () => {
+    const id = document.getElementById('order-edit-id').value;
+    const status = document.getElementById('order-status-sel').value;
+    const tracking = document.getElementById('order-tracking').value.trim();
+    const orders = Store.getOrders();
+    const idx = orders.findIndex(o => o.id === id);
+    if (idx === -1) return;
+    orders[idx].status = status;
+    if (tracking) orders[idx].tracking = tracking;
+    Store.saveOrders(orders);
+    Modal.close('order-modal');
+    AdminToast.show('Order status updated.', 'success');
+    renderOrders();
+  });
+
+  // Status tabs
+  document.querySelectorAll('.status-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      activeStatus = tab.dataset.status;
+      document.querySelectorAll('.status-tab').forEach(t => { t.className = 'btn btn-outline btn-sm status-tab'; });
+      tab.className = 'btn btn-primary btn-sm status-tab';
+      renderOrders();
+    });
+  });
+
+  // Add sample order
+  document.getElementById('btn-add-order').addEventListener('click', () => {
+    const orders = Store.getOrders();
+    const newId = 'HT-' + (1000 + orders.length + 1);
+    const products = Store.getProducts();
+    const randomProduct = products[Math.floor(Math.random() * products.length)];
+    const cities = ['Lahore','Karachi','Islamabad','Peshawar','Quetta','Sialkot','Rawalpindi'];
+    const names  = ['Ali Hassan','Ayesha Khan','Omar Farooq','Nadia Iqbal','Fahad Butt','Sana Mirza'];
+    orders.unshift({
+      id: newId,
+      customer: names[Math.floor(Math.random() * names.length)],
+      city: cities[Math.floor(Math.random() * cities.length)],
+      product: randomProduct?.title || 'Sample Product',
+      price: randomProduct?.price || 3000,
+      status: 'pending',
+      date: new Date().toISOString().slice(0,10),
+    });
+    Store.saveOrders(orders);
+    AdminToast.show('Sample order added.', 'success');
+    renderOrders();
+  });
+
+  renderOrders();
+</script>
+</body>
+</html>

@@ -607,7 +607,7 @@ function buildProductCard(product, link = 'product-detail.html') {
             <img src="${product.images[0]}" alt="${product.title}" class="product-card-img" loading="lazy">
           </a>
           <div class="product-card-badges">${badges}</div>
-          <button class="product-card-wishlist" aria-label="Add to wishlist" data-id="${product.id}">
+          <button class="product-card-wishlist" aria-label="Add to wishlist" data-id="${product.id}" style="display:none">
             <i class="bi bi-heart"></i>
           </button>
         </div>

@@ -2206,3 +2206,116 @@ img { max-width: 100%; height: auto; }
     flex-wrap: wrap;
   }
 }
+
+/* ============================================================
+   FIXES — Applied via change request
+   ============================================================ */
+
+/* 2. Hide scroll indicator on all screens */
+.scroll-indicator { display: none !important; }
+
+/* 3. Featured carousel buttons — always visible with solid dark bg */
+.featured-carousel-btn {
+  background: rgba(6,6,68,0.75) !important;
+  border: 2px solid rgba(255,255,255,0.35) !important;
+  backdrop-filter: blur(6px);
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50% !important;
+  opacity: 1 !important;
+}
+.featured-carousel-btn:hover {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+}
+
+/* 4. Hide wishlist button everywhere */
+.product-card-wishlist { display: none !important; }
+
+/* 5. Testimonials nav — spaced, floated below, fixed height */
+.testimonials-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+.tm-nav-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+.tm-nav-btn:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+/* Testimonial cards: fixed minimum height prevents layout jump on mobile */
+#testimonialsCarousel .carousel-item { min-height: 0; }
+#testimonialsCarousel .testimonial-card {
+  height: auto;
+}
+
+/* 6. Community section — dual card layout */
+.community-card {
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  text-align: center;
+  height: 100%;
+  display: flex; flex-direction: column; align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.community-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.community-card-ig {
+  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+  border: 1.5px solid #fbcfe8;
+}
+.community-card-wa {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 1.5px solid #bbf7d0;
+}
+.community-card-icon {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.community-card-ig .community-card-icon { background: #fce7f3; color: #db2777; }
+.community-card-wa .community-card-icon { background: #dcfce7; color: #16a34a; }
+.community-card-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700; font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+}
+.community-card-body {
+  font-size: 0.875rem; color: var(--text-muted);
+  line-height: 1.7; margin-bottom: 24px; flex: 1;
+}
+.community-card-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 24px; border-radius: 50px;
+  font-family: 'Poppins', sans-serif; font-weight: 600;
+  font-size: 0.875rem; text-decoration: none;
+  transition: all 0.2s;
+}
+.community-btn-ig {
+  background: linear-gradient(135deg, #e1306c, #833ab4);
+  color: #fff;
+}
+.community-btn-ig:hover { opacity: 0.9; color: #fff; transform: scale(1.03); }
+.community-btn-wa { background: #16a34a; color: #fff; }
+.community-btn-wa:hover { background: #15803d; color: #fff; transform: scale(1.03); }
+
+/* Footer bottom — centered, clean */
+.footer-bottom {
+  justify-content: center !important;
+  text-align: center !important;
+}

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products — Hamara Thrift Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">HT</div>
+      <div>
+        <div class="sidebar-brand-name">Hamara Thrift</div>
+        <div class="sidebar-brand-sub">Admin Panel</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <div class="nav-item" data-page="dashboard.html"><i class="bi bi-grid-1x2"></i> Dashboard</div>
+      <div class="nav-item" data-page="products.html"><i class="bi bi-box-seam"></i> Products</div>
+      <div class="nav-item" data-page="orders.html"><i class="bi bi-bag-check"></i> Orders</div>
+      <div class="nav-section-label">Content</div>
+      <div class="nav-item" data-page="content-home.html"><i class="bi bi-house"></i> Home Page</div>
+      <div class="nav-item" data-page="content-about.html"><i class="bi bi-person-lines-fill"></i> About Page</div>
+      <div class="nav-item" data-page="content-contact.html"><i class="bi bi-telephone"></i> Contact Page</div>
+      <div class="nav-item" data-page="content-shop.html"><i class="bi bi-bag"></i> Shop Page</div>
+      <div class="nav-item" data-page="content-settings.html"><i class="bi bi-gear"></i> Settings</div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-avatar">A</div>
+      <div>
+        <div class="sidebar-user-name">Abdullah</div>
+        <div class="sidebar-user-role">Owner</div>
+      </div>
+      <button class="sidebar-logout" title="Sign out"><i class="bi bi-box-arrow-right"></i></button>
+    </div>
+  </aside>
+  <div class="sidebar-overlay"></div>
+
+  <!-- MAIN -->
+  <div class="main-content">
+    <div class="topbar">
+      <button class="topbar-toggle"><i class="bi bi-list"></i></button>
+      <span class="topbar-title">Products</span>
+      <div class="topbar-right">
+        <a href="../shop.html" target="_blank" class="topbar-store-link">
+          <i class="bi bi-arrow-up-right-square"></i> View Shop
+        </a>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1>Products</h1>
+          <p>Each pair is unique — add, edit, or remove listings.</p>
+        </div>
+        <button class="btn btn-primary" id="btn-add-product">
+          <i class="bi bi-plus-lg"></i> Add Product
+        </button>
+      </div>
+
+      <!-- TOOLBAR -->
+      <div class="card" style="margin-bottom:16px">
+        <div class="card-body" style="padding:14px 16px">
+          <div class="toolbar">
+            <div class="toolbar-search">
+              <i class="bi bi-search"></i>
+              <input type="text" id="search-input" placeholder="Search products...">
+            </div>
+            <select class="toolbar-select" id="filter-condition">
+              <option value="">All Conditions</option>
+              <option value="New">New</option>
+              <option value="Excellent">Excellent</option>
+              <option value="Good">Good</option>
+              <option value="Fair">Fair</option>
+            </select>
+            <select class="toolbar-select" id="filter-gender">
+              <option value="">All Genders</option>
+              <option value="Men">Men</option>
+              <option value="Women">Women</option>
+              <option value="Unisex">Unisex</option>
+            </select>
+            <select class="toolbar-select" id="filter-brand">
+              <option value="">All Brands</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABLE -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title" id="table-count">All Products</span>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:0.78rem;color:var(--text-3)" id="table-sub"></span>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table id="products-table">
+            <thead>
+              <tr>
+                <th style="width:40px">#</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Size</th>
+                <th>Gender</th>
+                <th>Condition</th>
+                <th>Featured</th>
+                <th style="text-align:right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="products-tbody"></tbody>
+          </table>
+          <div id="products-empty" class="empty-state hidden">
+            <i class="bi bi-search"></i>
+            <p>No products match your filters.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ADD / EDIT MODAL -->
+<div class="modal-backdrop" id="product-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modal-title">Add Product</span>
+      <button class="modal-close" id="modal-close-btn">&times;</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="edit-id">
+
+      <div class="field-row field-row-2">
+        <div class="field-group">
+          <label class="field-label">Title *</label>
+          <input type="text" class="field-input" id="f-title" placeholder="e.g. Nike Air Max 270">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Brand *</label>
+          <input type="text" class="field-input" id="f-brand" placeholder="e.g. Nike" list="brand-list">
+          <datalist id="brand-list">
+            <option value="Nike"><option value="Adidas"><option value="Jordan"><option value="Puma">
+            <option value="New Balance"><option value="Converse"><option value="Vans"><option value="Reebok">
+            <option value="Asics"><option value="Saucony"><option value="Brooks"><option value="Under Armour">
+          </datalist>
+        </div>
+      </div>
+
+      <div class="field-row field-row-3">
+        <div class="field-group">
+          <label class="field-label">Price (PKR) *</label>
+          <input type="number" class="field-input" id="f-price" placeholder="4500" min="0">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Size (US) *</label>
+          <input type="number" class="field-input" id="f-size" placeholder="10" min="4" max="16" step="0.5">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Category</label>
+          <select class="field-select" id="f-category">
+            <option>Lifestyle</option><option>Running</option><option>Basketball</option>
+            <option>Skate</option><option>Training</option><option>Football</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-row field-row-2">
+        <div class="field-group">
+          <label class="field-label">Condition *</label>
+          <select class="field-select" id="f-condition">
+            <option value="New">New — worn once or never</option>
+            <option value="Excellent">Excellent — light use</option>
+            <option value="Good">Good — moderate use</option>
+            <option value="Fair">Fair — heavy use, still wearable</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Gender *</label>
+          <select class="field-select" id="f-gender">
+            <option value="Men">Men</option>
+            <option value="Women">Women</option>
+            <option value="Unisex">Unisex</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Description *</label>
+        <textarea class="field-textarea" id="f-description" rows="3" placeholder="Describe the shoe honestly — condition details, what's included, any defects..."></textarea>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Image URLs <span style="font-weight:400;text-transform:none;color:var(--text-3)">(up to 4 — paste direct image links)</span></label>
+        <div class="image-url-list" id="image-url-list"></div>
+        <div class="image-preview-strip" id="image-previews"></div>
+        <p class="field-hint">Tip: Use WhatsApp Web to upload photos, right-click → "Copy image link", paste here.</p>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:4px">
+        <div class="toggle-wrap">
+          <label class="toggle">
+            <input type="checkbox" id="f-featured">
+            <span class="toggle-slider"></span>
+          </label>
+          <span style="font-size:0.875rem;font-weight:600">Featured on homepage</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" id="modal-cancel-btn">Cancel</button>
+      <button class="btn btn-primary" id="modal-save-btn"><i class="bi bi-check-lg"></i> Save Product</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack"></div>
+
+<script src="assets/js/admin.js"></script>
+<script>
+  requireAuth();
+  initSidebar('products.html');
+
+  let editingId = null;
+
+  /* ---- Populate brand filter ---- */
+  function populateBrandFilter() {
+    const brands = [...new Set(Store.getProducts().map(p => p.brand))].sort();
+    const sel = document.getElementById('filter-brand');
+    brands.forEach(b => {
+      const o = document.createElement('option');
+      o.value = b; o.textContent = b;
+      sel.appendChild(o);
+    });
+  }
+
+  /* ---- Render table ---- */
+  function renderTable() {
+    const q    = document.getElementById('search-input').value.toLowerCase();
+    const cond = document.getElementById('filter-condition').value;
+    const gend = document.getElementById('filter-gender').value;
+    const brnd = document.getElementById('filter-brand').value;
+
+    let products = Store.getProducts().filter(p => {
+      if (q && !p.title.toLowerCase().includes(q) && !p.brand.toLowerCase().includes(q)) return false;
+      if (cond && p.condition !== cond) return false;
+      if (gend && p.gender !== gend) return false;
+      if (brnd && p.brand !== brnd) return false;
+      return true;
+    });
+
+    const tbody = document.getElementById('products-tbody');
+    const empty = document.getElementById('products-empty');
+    const count = document.getElementById('table-count');
+    const sub   = document.getElementById('table-sub');
+
+    count.textContent = `${products.length} Product${products.length !== 1 ? 's' : ''}`;
+    sub.textContent   = q || cond || gend || brnd ? 'Filtered' : '';
+
+    if (!products.length) {
+      tbody.innerHTML = '';
+      empty.classList.remove('hidden');
+      return;
+    }
+    empty.classList.add('hidden');
+
+    tbody.innerHTML = products.map((p, i) => `
+      <tr>
+        <td style="color:var(--text-3);font-size:0.78rem">${p.id}</td>
+        <td>
+          <div class="product-cell">
+            <img src="${esc(p.images[0])}" class="product-thumb" alt="" onerror="this.src='https://picsum.photos/seed/placeholder/100/100'">
+            <div>
+              <div class="product-name">${esc(p.title)}</div>
+              <div class="product-brand">${esc(p.brand)} · ${esc(p.category)}</div>
+            </div>
+          </div>
+        </td>
+        <td style="font-weight:600;white-space:nowrap">${formatPrice(p.price)}</td>
+        <td>US ${p.size}</td>
+        <td>${genderBadge(p.gender)}</td>
+        <td>${conditionBadge(p.condition)}</td>
+        <td style="text-align:center">
+          ${p.featured ? '<i class="bi bi-star-fill" style="color:#f59e0b" title="Featured"></i>' : '<i class="bi bi-star" style="color:var(--text-3)"></i>'}
+        </td>
+        <td>
+          <div style="display:flex;justify-content:flex-end;gap:6px">
+            <button class="btn btn-outline btn-sm btn-icon" onclick="openEdit(${p.id})" title="Edit">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn btn-danger btn-sm btn-icon" onclick="deleteProduct(${p.id})" title="Delete">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+        </td>
+      </tr>`).join('');
+  }
+
+  /* ---- Image URL inputs ---- */
+  function buildImageInputs(urls = ['','','','']) {
+    const list = document.getElementById('image-url-list');
+    list.innerHTML = '';
+    for (let i = 0; i < 4; i++) {
+      const row = document.createElement('div');
+      row.className = 'image-url-row';
+      row.innerHTML = `
+        <input type="url" class="field-input img-url-input" placeholder="Image ${i+1} URL${i===0?' (main)':' (optional)'}" value="${esc(urls[i]||'')}">`;
+      list.appendChild(row);
+      row.querySelector('input').addEventListener('input', updatePreviews);
+    }
+    updatePreviews();
+  }
+
+  function updatePreviews() {
+    const inputs = document.querySelectorAll('.img-url-input');
+    const strip  = document.getElementById('image-previews');
+    strip.innerHTML = '';
+    inputs.forEach(inp => {
+      if (inp.value.trim()) {
+        const img = document.createElement('img');
+        img.src = inp.value.trim();
+        img.className = 'image-preview-thumb';
+        img.onerror = () => img.style.opacity = '0.3';
+        strip.appendChild(img);
+      }
+    });
+  }
+
+  /* ---- Open modal for add ---- */
+  document.getElementById('btn-add-product').addEventListener('click', () => {
+    editingId = null;
+    document.getElementById('modal-title').textContent = 'Add Product';
+    document.getElementById('edit-id').value = '';
+    ['f-title','f-brand','f-price','f-size','f-description'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('f-condition').value = 'Excellent';
+    document.getElementById('f-gender').value = 'Men';
+    document.getElementById('f-category').value = 'Lifestyle';
+    document.getElementById('f-featured').checked = false;
+    buildImageInputs();
+    Modal.open('product-modal');
+    setTimeout(() => document.getElementById('f-title').focus(), 100);
+  });
+
+  /* ---- Open modal for edit ---- */
+  function openEdit(id) {
+    const p = Store.getProducts().find(x => x.id === id);
+    if (!p) return;
+    editingId = id;
+    document.getElementById('modal-title').textContent = 'Edit Product';
+    document.getElementById('edit-id').value = id;
+    document.getElementById('f-title').value = p.title;
+    document.getElementById('f-brand').value = p.brand;
+    document.getElementById('f-price').value = p.price;
+    document.getElementById('f-size').value  = p.size;
+    document.getElementById('f-condition').value = p.condition;
+    document.getElementById('f-gender').value    = p.gender;
+    document.getElementById('f-category').value  = p.category || 'Lifestyle';
+    document.getElementById('f-description').value = p.description;
+    document.getElementById('f-featured').checked  = !!p.featured;
+    buildImageInputs(p.images);
+    Modal.open('product-modal');
+    setTimeout(() => document.getElementById('f-title').focus(), 100);
+  }
+
+  /* ---- Save ---- */
+  document.getElementById('modal-save-btn').addEventListener('click', () => {
+    const title = document.getElementById('f-title').value.trim();
+    const brand = document.getElementById('f-brand').value.trim();
+    const price = parseFloat(document.getElementById('f-price').value);
+    const size  = parseFloat(document.getElementById('f-size').value);
+    const desc  = document.getElementById('f-description').value.trim();
+
+    if (!title || !brand || !price || !size || !desc) {
+      AdminToast.show('Please fill in all required fields.', 'error');
+      return;
+    }
+
+    const images = [...document.querySelectorAll('.img-url-input')]
+      .map(inp => inp.value.trim()).filter(Boolean);
+
+    if (!images.length) {
+      AdminToast.show('Please add at least one image URL.', 'error');
+      return;
+    }
+
+    // Pad to 4 images using the first as placeholder
+    while (images.length < 4) images.push(images[0]);
+
+    const product = {
+      id: editingId || Store.nextProductId(),
+      title, brand, price, size,
+      condition: document.getElementById('f-condition').value,
+      gender:    document.getElementById('f-gender').value,
+      category:  document.getElementById('f-category').value,
+      description: desc,
+      images: images.slice(0, 4),
+      featured: document.getElementById('f-featured').checked,
+      stock: 1,
+    };
+
+    const products = Store.getProducts();
+    if (editingId) {
+      const idx = products.findIndex(p => p.id === editingId);
+      products[idx] = product;
+      AdminToast.show('Product updated successfully.', 'success');
+    } else {
+      products.push(product);
+      AdminToast.show('Product added successfully.', 'success');
+    }
+
+    Store.saveProducts(products);
+    Modal.close('product-modal');
+    renderTable();
+    populateBrandFilter();
+  });
+
+  /* ---- Delete ---- */
+  function deleteProduct(id) {
+    const p = Store.getProducts().find(x => x.id === id);
+    showConfirm('Delete Product', `Delete "${p?.title}"? This cannot be undone.`, () => {
+      const products = Store.getProducts().filter(x => x.id !== id);
+      Store.saveProducts(products);
+      AdminToast.show('Product deleted.', 'success');
+      renderTable();
+      populateBrandFilter();
+    });
+  }
+
+  /* ---- Close modal ---- */
+  document.getElementById('modal-close-btn').addEventListener('click', () => Modal.close('product-modal'));
+  document.getElementById('modal-cancel-btn').addEventListener('click', () => Modal.close('product-modal'));
+  document.getElementById('product-modal').addEventListener('click', e => {
+    if (e.target === e.currentTarget) Modal.close('product-modal');
+  });
+
+  /* ---- Filters ---- */
+  ['search-input','filter-condition','filter-gender','filter-brand'].forEach(id => {
+    document.getElementById(id).addEventListener('input', renderTable);
+    document.getElementById(id).addEventListener('change', renderTable);
+  });
+
+  populateBrandFilter();
+  renderTable();
+</script>
+</body>
+</html>

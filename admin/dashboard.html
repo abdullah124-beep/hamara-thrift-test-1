@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Hamara Thrift Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">HT</div>
+      <div>
+        <div class="sidebar-brand-name">Hamara Thrift</div>
+        <div class="sidebar-brand-sub">Admin Panel</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <div class="nav-item" data-page="dashboard.html"><i class="bi bi-grid-1x2"></i> Dashboard</div>
+      <div class="nav-item" data-page="products.html"><i class="bi bi-box-seam"></i> Products</div>
+      <div class="nav-item" data-page="orders.html"><i class="bi bi-bag-check"></i> Orders</div>
+      <div class="nav-section-label">Content</div>
+      <div class="nav-item" data-page="content-home.html"><i class="bi bi-house"></i> Home Page</div>
+      <div class="nav-item" data-page="content-about.html"><i class="bi bi-person-lines-fill"></i> About Page</div>
+      <div class="nav-item" data-page="content-contact.html"><i class="bi bi-telephone"></i> Contact Page</div>
+      <div class="nav-item" data-page="content-shop.html"><i class="bi bi-bag"></i> Shop Page</div>
+      <div class="nav-item" data-page="content-settings.html"><i class="bi bi-gear"></i> Settings</div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-avatar">A</div>
+      <div>
+        <div class="sidebar-user-name">Abdullah</div>
+        <div class="sidebar-user-role">Owner</div>
+      </div>
+      <button class="sidebar-logout" title="Sign out"><i class="bi bi-box-arrow-right"></i></button>
+    </div>
+  </aside>
+  <div class="sidebar-overlay"></div>
+
+  <!-- MAIN -->
+  <div class="main-content">
+    <div class="topbar">
+      <button class="topbar-toggle"><i class="bi bi-list"></i></button>
+      <span class="topbar-title">Dashboard</span>
+      <div class="topbar-right">
+        <a href="../index.html" target="_blank" class="topbar-store-link">
+          <i class="bi bi-arrow-up-right-square"></i> View Store
+        </a>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1>Good morning, Abdullah 👋</h1>
+          <p>Here's what's happening with your store today.</p>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="stats-grid" id="stats-grid"></div>
+
+      <!-- TWO COLUMNS -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px" id="two-col">
+
+        <!-- Recent Orders -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Recent Orders</span>
+            <a href="orders.html" class="btn btn-outline btn-sm">View All</a>
+          </div>
+          <div class="table-wrap">
+            <table id="recent-orders-table">
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Customer</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Low Stock / Featured Products -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Listed Products</span>
+            <a href="products.html" class="btn btn-outline btn-sm">Manage</a>
+          </div>
+          <div class="table-wrap">
+            <table id="products-summary-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Condition</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick actions -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">Quick Actions</span></div>
+        <div class="card-body" style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="products.html" class="btn btn-primary"><i class="bi bi-plus-lg"></i> Add New Product</a>
+          <a href="content-home.html" class="btn btn-outline"><i class="bi bi-pencil"></i> Edit Home Page</a>
+          <a href="content-about.html" class="btn btn-outline"><i class="bi bi-person"></i> Edit About Page</a>
+          <a href="content-settings.html" class="btn btn-outline"><i class="bi bi-gear"></i> Store Settings</a>
+          <a href="../index.html" target="_blank" class="btn btn-outline"><i class="bi bi-eye"></i> Preview Store</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack"></div>
+
+<script src="assets/js/admin.js"></script>
+<script>
+  requireAuth();
+  initSidebar('dashboard.html');
+
+  // Render stats
+  function renderStats() {
+    const products = Store.getProducts();
+    const orders   = Store.getOrders();
+    const revenue  = orders.filter(o => o.status === 'delivered').reduce((s,o) => s + o.price, 0);
+    const pending  = orders.filter(o => o.status === 'pending').length;
+
+    document.getElementById('stats-grid').innerHTML = `
+      <div class="stat-card">
+        <div class="stat-icon blue"><i class="bi bi-box-seam"></i></div>
+        <div>
+          <div class="stat-label">Listed Products</div>
+          <div class="stat-value">${products.length}</div>
+          <div class="stat-sub">Each pair is unique</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon orange"><i class="bi bi-clock"></i></div>
+        <div>
+          <div class="stat-label">Pending Orders</div>
+          <div class="stat-value">${pending}</div>
+          <div class="stat-sub">Need dispatch</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green"><i class="bi bi-bag-check"></i></div>
+        <div>
+          <div class="stat-label">Total Orders</div>
+          <div class="stat-value">${orders.length}</div>
+          <div class="stat-sub">All time</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon purple"><i class="bi bi-cash-stack"></i></div>
+        <div>
+          <div class="stat-label">Revenue (Delivered)</div>
+          <div class="stat-value" style="font-size:1.1rem">PKR ${revenue.toLocaleString()}</div>
+          <div class="stat-sub">Completed orders</div>
+        </div>
+      </div>`;
+  }
+
+  // Render recent orders
+  function renderRecentOrders() {
+    const orders = Store.getOrders().slice(0, 5);
+    const statusColor = { pending:'warning', shipped:'info', delivered:'success', cancelled:'danger' };
+    const tbody = document.querySelector('#recent-orders-table tbody');
+    tbody.innerHTML = orders.map(o => `
+      <tr>
+        <td><strong>${o.id}</strong></td>
+        <td>${esc(o.customer)}<br><small style="color:var(--text-3)">${esc(o.city)}</small></td>
+        <td style="white-space:nowrap">${formatPrice(o.price)}</td>
+        <td><span class="badge badge-${statusColor[o.status] || 'good'}" style="text-transform:capitalize">${o.status}</span></td>
+      </tr>`).join('');
+  }
+
+  // Render product summary
+  function renderProductSummary() {
+    const products = Store.getProducts().slice(0, 6);
+    const tbody = document.querySelector('#products-summary-table tbody');
+    tbody.innerHTML = products.map(p => `
+      <tr>
+        <td>
+          <div class="product-cell">
+            <img src="${esc(p.images[0])}" class="product-thumb" alt="">
+            <div>
+              <div class="product-name">${esc(p.title)}</div>
+              <div class="product-brand">${esc(p.brand)} · US ${p.size}</div>
+            </div>
+          </div>
+        </td>
+        <td style="white-space:nowrap">${formatPrice(p.price)}</td>
+        <td>${conditionBadge(p.condition)}</td>
+      </tr>`).join('');
+  }
+
+  // Responsive two-column
+  function checkLayout() {
+    const col = document.getElementById('two-col');
+    if (window.innerWidth < 700) col.style.gridTemplateColumns = '1fr';
+    else col.style.gridTemplateColumns = '1fr 1fr';
+  }
+
+  renderStats();
+  renderRecentOrders();
+  renderProductSummary();
+  checkLayout();
+  window.addEventListener('resize', checkLayout);
+</script>
+</body>
+</html>

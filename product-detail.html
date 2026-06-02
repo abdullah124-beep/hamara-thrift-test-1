@@ -19,13 +19,13 @@
 </head>
 <body>
 
-  <!-- ============ NAVBAR ============ -->
-  <nav class="main-navbar navbar navbar-expand-lg">
+    <!-- ============ NAVBAR ============ -->
+  <nav class="main-navbar navbar navbar-expand-lg" role="navigation" aria-label="Main navigation">
     <div class="container">
-      <a class="navbar-brand-custom" href="index.html">
-  
+      <a class="navbar-brand-custom" href="index.html" aria-label="Hamara Thrift Home">
         <img src="assets/images/hamara-thrift-logo.png" alt="Hamara Thrift" class="navbar-logo-img">
       </a>
+
       <!-- Mobile-only: search + cart sit between logo and hamburger -->
       <div class="d-flex d-lg-none align-items-center gap-1 ms-auto me-2">
         <button class="navbar-icon-btn mobile-search-trigger" aria-label="Search" type="button">
@@ -37,16 +37,27 @@
         </a>
       </div>
 
-      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Toggle navigation">
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav mx-auto gap-1">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="shop.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
+        <div class="navbar-icons">
+          <div class="navbar-search d-none d-lg-block me-2">
+            <i class="bi bi-search search-icon" aria-hidden="true"></i>
+            <input type="search" placeholder="Search sneakers..." aria-label="Search products">
+          </div>
+          <a href="cart.html" class="navbar-icon-btn d-none d-lg-flex" aria-label="Shopping cart">
+            <i class="bi bi-bag" aria-hidden="true"></i>
+            <span class="cart-badge hidden" aria-live="polite">0</span>
+          </a>
+        </div>
       </div>
     </div>
   </nav>
@@ -254,7 +265,7 @@
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="terms.html">Terms &amp; Privacy</a></li>
-            <li><a href="return-policy.html">Return Policy</a></li>
+            <li><a href="exchange-policy.html">Exchange Policy</a></li>
             <li><a href="contact.html#faq">FAQs</a></li>
           </ul>
         </div>
@@ -273,10 +284,8 @@
         </div>
       </div>
 
-      <div class="footer-bottom">
+      <div class="footer-bottom" style="justify-content:center;text-align:center">
         <span>&copy; 2026 Hamara Thrift Multan. All rights reserved.</span>
-        <span>Made with &#10084; in Multan, Pakistan</span>
-        <a href="terms.html" style="color:inherit">Terms &amp; Privacy</a>
       </div>
     </div>
   </footer>

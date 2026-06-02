@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings — Hamara Thrift Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">HT</div>
+      <div><div class="sidebar-brand-name">Hamara Thrift</div><div class="sidebar-brand-sub">Admin Panel</div></div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <div class="nav-item" data-page="dashboard.html"><i class="bi bi-grid-1x2"></i> Dashboard</div>
+      <div class="nav-item" data-page="products.html"><i class="bi bi-box-seam"></i> Products</div>
+      <div class="nav-item" data-page="orders.html"><i class="bi bi-bag-check"></i> Orders</div>
+      <div class="nav-section-label">Content</div>
+      <div class="nav-item" data-page="content-home.html"><i class="bi bi-house"></i> Home Page</div>
+      <div class="nav-item" data-page="content-about.html"><i class="bi bi-person-lines-fill"></i> About Page</div>
+      <div class="nav-item" data-page="content-contact.html"><i class="bi bi-telephone"></i> Contact Page</div>
+      <div class="nav-item" data-page="content-shop.html"><i class="bi bi-bag"></i> Shop Page</div>
+      <div class="nav-item" data-page="content-settings.html"><i class="bi bi-gear"></i> Settings</div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-avatar">A</div>
+      <div><div class="sidebar-user-name">Abdullah</div><div class="sidebar-user-role">Owner</div></div>
+      <button class="sidebar-logout" title="Sign out"><i class="bi bi-box-arrow-right"></i></button>
+    </div>
+  </aside>
+  <div class="sidebar-overlay"></div>
+
+  <div class="main-content">
+    <div class="topbar">
+      <button class="topbar-toggle"><i class="bi bi-list"></i></button>
+      <span class="topbar-title">Store Settings</span>
+      <div class="topbar-right"></div>
+    </div>
+    <div class="page-content">
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1>Store Settings</h1>
+          <p>Contact info, delivery charges, return policy and admin credentials.</p>
+        </div>
+        <button class="btn btn-primary" id="btn-save-settings"><i class="bi bi-check-lg"></i> Save All Settings</button>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px" id="settings-grid">
+
+        <!-- CONTACT INFO -->
+        <div class="card">
+          <div class="card-header"><span class="card-title"><i class="bi bi-telephone me-2"></i>Contact Info</span></div>
+          <div class="card-body">
+            <div class="field-group">
+              <label class="field-label">Phone Number</label>
+              <input type="tel" class="field-input" id="s-phone" placeholder="+92 300 1234567">
+            </div>
+            <div class="field-group">
+              <label class="field-label">WhatsApp Number (digits only, with country code)</label>
+              <input type="text" class="field-input" id="s-whatsapp" placeholder="923001234567">
+              <p class="field-hint">Used in wa.me/ links — no +, spaces, or dashes.</p>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Email Address</label>
+              <input type="email" class="field-input" id="s-email" placeholder="hello@hamarathrift.pk">
+            </div>
+            <div class="field-group">
+              <label class="field-label">Address</label>
+              <input type="text" class="field-input" id="s-address" placeholder="Wapda Town, Multan">
+            </div>
+            <div class="field-group">
+              <label class="field-label">Business Hours</label>
+              <input type="text" class="field-input" id="s-hours" placeholder="Mon – Sun, 10am – 9pm">
+            </div>
+          </div>
+        </div>
+
+        <!-- DELIVERY -->
+        <div class="card">
+          <div class="card-header"><span class="card-title"><i class="bi bi-truck me-2"></i>Delivery Settings</span></div>
+          <div class="card-body">
+            <div class="field-group">
+              <label class="field-label">Courier Partner</label>
+              <input type="text" class="field-input" id="s-courier" placeholder="TCS">
+            </div>
+            <div class="field-row field-row-2">
+              <div class="field-group">
+                <label class="field-label">Min Charge (PKR)</label>
+                <input type="number" class="field-input" id="s-del-min" placeholder="250" min="0">
+              </div>
+              <div class="field-group">
+                <label class="field-label">Max Charge (PKR)</label>
+                <input type="number" class="field-input" id="s-del-max" placeholder="400" min="0">
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Fixed Charge on Cart (PKR)</label>
+              <input type="number" class="field-input" id="s-del-fixed" placeholder="300" min="0">
+              <p class="field-hint">This is shown in the cart and checkout order summary.</p>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Estimated Delivery Time</label>
+              <input type="text" class="field-input" id="s-del-days" placeholder="3–4 working days">
+            </div>
+          </div>
+        </div>
+
+        <!-- RETURN POLICY -->
+        <div class="card">
+          <div class="card-header"><span class="card-title"><i class="bi bi-arrow-repeat me-2"></i>Exchange Policy</span></div>
+          <div class="card-body">
+            <div class="field-group">
+              <label class="field-label">Return Window (days)</label>
+              <input type="number" class="field-input" id="s-return-days" placeholder="3" min="1" max="30">
+            </div>
+            <div class="field-group">
+              <label class="field-label">Exchange Policy Summary</label>
+              <textarea class="field-textarea" id="s-return-summary" rows="3" placeholder="If the shoe is not as described or shown, contact us within 3 days of receiving it."></textarea>
+              <p class="field-hint">Shown in the FAQ and footer. Full details are on the return policy page.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADMIN CREDENTIALS -->
+        <div class="card">
+          <div class="card-header"><span class="card-title"><i class="bi bi-shield-lock me-2"></i>Admin Credentials</span></div>
+          <div class="card-body">
+            <div style="padding:12px 14px;background:var(--warning-lt);border:1px solid #fbbf24;border-radius:var(--radius);margin-bottom:16px;font-size:0.82rem;color:#92400e">
+              <i class="bi bi-exclamation-triangle me-1"></i>
+              <strong>Important:</strong> Credentials are stored in <code>admin/assets/js/admin.js</code>. Change them in that file directly before going live. The form below shows what's currently set.
+            </div>
+            <div class="field-group">
+              <label class="field-label">Current Username</label>
+              <input type="text" class="field-input" id="s-admin-user" readonly style="background:#f8fafc;cursor:not-allowed">
+            </div>
+            <div class="field-group">
+              <label class="field-label">Current Password</label>
+              <input type="text" class="field-input" id="s-admin-pass" readonly style="background:#f8fafc;cursor:not-allowed">
+            </div>
+            <p class="field-hint" style="margin-top:4px">
+              To change: open <code>shoe-thrift/admin/assets/js/admin.js</code> and update the <code>ADMIN_CREDENTIALS</code> object at the top of the file.
+            </p>
+            <div style="margin-top:12px">
+              <button class="btn btn-outline btn-sm" onclick="logout()">
+                <i class="bi bi-box-arrow-right"></i> Sign Out Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-stack"></div>
+<script src="assets/js/admin.js"></script>
+<script>
+  requireAuth();
+  initSidebar('content-settings.html');
+
+  function checkGrid() {
+    const grid = document.getElementById('settings-grid');
+    if (window.innerWidth < 700) grid.style.gridTemplateColumns = '1fr';
+    else grid.style.gridTemplateColumns = '1fr 1fr';
+  }
+  checkGrid();
+  window.addEventListener('resize', checkGrid);
+
+  const FIELDS = {
+    's-phone':        ['contact','phone'],
+    's-whatsapp':     ['contact','whatsapp'],
+    's-email':        ['contact','email'],
+    's-address':      ['contact','address'],
+    's-hours':        ['contact','hours'],
+    's-courier':      ['delivery','partner'],
+    's-del-min':      ['delivery','minCharge'],
+    's-del-max':      ['delivery','maxCharge'],
+    's-del-fixed':    ['delivery','fixedCharge'],
+    's-del-days':     ['delivery','estimatedDays'],
+    's-return-days':  ['returnPolicy','windowDays'],
+    's-return-summary':['returnPolicy','summary'],
+  };
+
+  function getNestedVal(obj, keys) {
+    return keys.reduce((o, k) => (o && o[k] !== undefined ? o[k] : ''), obj);
+  }
+  function setNestedVal(obj, keys, val) {
+    const last = keys[keys.length-1];
+    const parent = keys.slice(0,-1).reduce((o,k) => { if(!o[k]) o[k]={}; return o[k]; }, obj);
+    parent[last] = val;
+  }
+
+  function loadFields() {
+    const content = Store.getContent();
+    Object.entries(FIELDS).forEach(([id, path]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = getNestedVal(content, path);
+    });
+    document.getElementById('s-admin-user').value = ADMIN_CREDENTIALS.username;
+    document.getElementById('s-admin-pass').value = ADMIN_CREDENTIALS.password;
+  }
+
+  document.getElementById('btn-save-settings').addEventListener('click', () => {
+    const content = Store.getContent();
+    Object.entries(FIELDS).forEach(([id, path]) => {
+      const el = document.getElementById(id);
+      if (!el || el.readOnly) return;
+      const val = el.type === 'number' ? Number(el.value) : el.value.trim();
+      setNestedVal(content, path, val);
+    });
+    Store.saveContent(content);
+    AdminToast.show('Settings saved successfully!', 'success');
+  });
+
+  loadFields();
+</script>
+</body>
+</html>

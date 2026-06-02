@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page — Hamara Thrift Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="sidebar">
+    <div class="sidebar-brand"><div class="sidebar-logo">HT</div><div><div class="sidebar-brand-name">Hamara Thrift</div><div class="sidebar-brand-sub">Admin Panel</div></div></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <div class="nav-item" data-page="dashboard.html"><i class="bi bi-grid-1x2"></i> Dashboard</div>
+      <div class="nav-item" data-page="products.html"><i class="bi bi-box-seam"></i> Products</div>
+      <div class="nav-item" data-page="orders.html"><i class="bi bi-bag-check"></i> Orders</div>
+      <div class="nav-section-label">Content</div>
+      <div class="nav-item" data-page="content-home.html"><i class="bi bi-house"></i> Home Page</div>
+      <div class="nav-item" data-page="content-about.html"><i class="bi bi-person-lines-fill"></i> About Page</div>
+      <div class="nav-item" data-page="content-contact.html"><i class="bi bi-telephone"></i> Contact Page</div>
+      <div class="nav-item" data-page="content-shop.html"><i class="bi bi-bag"></i> Shop Page</div>
+      <div class="nav-item" data-page="content-settings.html"><i class="bi bi-gear"></i> Settings</div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-avatar">A</div>
+      <div><div class="sidebar-user-name">Abdullah</div><div class="sidebar-user-role">Owner</div></div>
+      <button class="sidebar-logout" title="Sign out"><i class="bi bi-box-arrow-right"></i></button>
+    </div>
+  </aside>
+  <div class="sidebar-overlay"></div>
+  <div class="main-content">
+    <div class="topbar">
+      <button class="topbar-toggle"><i class="bi bi-list"></i></button>
+      <span class="topbar-title">Home Page Content</span>
+      <div class="topbar-right"><a href="../index.html" target="_blank" class="topbar-store-link"><i class="bi bi-arrow-up-right-square"></i> Preview</a></div>
+    </div>
+    <div class="page-content">
+      <div class="page-header">
+        <div class="page-header-left"><h1>Home Page Content</h1><p>Every section — hero, features, testimonials, footer.</p></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-outline" id="btn-reset"><i class="bi bi-arrow-counterclockwise"></i> Reset</button>
+          <button class="btn btn-primary" id="btn-save"><i class="bi bi-check-lg"></i> Save All</button>
+        </div>
+      </div>
+      <div class="content-sections">
+
+        <!-- HERO -->
+        <div class="section-block">
+          <div class="section-block-header" onclick="toggleSection(this)"><div class="section-block-title"><i class="bi bi-image" style="color:var(--primary)"></i> ① Hero Banner</div><i class="bi bi-chevron-down toggle-chevron"></i></div>
+          <div class="section-block-body">
+            <div class="field-group"><label class="field-label">Eyebrow / Location Tag</label><input type="text" class="field-input" id="h-eyebrow"></div>
+            <div class="field-row field-row-2">
+              <div class="field-group"><label class="field-label">H1 Line 1</label><input type="text" class="field-input" id="h-heading1"><p class="field-hint">e.g. "Thrift Premium"</p></div>
+              <div class="field-group"><label class="field-label">H1 Line 2</label><input type="text" class="field-input" id="h-heading2"><p class="field-hint">e.g. "Sneakers in Multan"</p></div>
+            </div>
+            <div class="field-group"><label class="field-label">Subtitle Paragraph</label><textarea class="field-textarea" id="h-subtitle" rows="2"></textarea></div>
+            <div class="field-row field-row-2">
+              <div class="field-group"><label class="field-label">Primary CTA Button</label><input type="text" class="field-input" id="h-cta1"></div>
+              <div class="field-group"><label class="field-label">Secondary CTA Button</label><input type="text" class="field-input" id="h-cta2"></div>
+            </div>
+            <div class="field-row field-row-2">
+              <div class="field-group"><label class="field-label">Trust Rating Text</label><input type="text" class="field-input" id="h-trust-rating"></div>
+              <div class="field-group"><label class="field-label">Trust Quote Author</label><input type="text" class="field-input" id="h-trust-author"></div>
+            </div>
+            <div class="field-group"><label class="field-label">Trust Quote</label><input type="text" class="field-input" id="h-trust-quote"></div>
+          </div>
+        </div>
+
+        <!-- STATS -->
+        <div class="section-block">
+          <div class="section-block-header" onclick="toggleSection(this)"><div class="section-block-title"><i class="bi bi-bar-chart-line" style="color:var(--accent)"></i> ② Hero Stats</div><i class="bi bi-chevron-down toggle-chevron"></i></div>
+          <div class="section-block-body">
+            <div class="field-row field-row-3">
+              <div class="field-group"><label class="field-label">Stat 1 Number</label><input type="text" class="field-input" id="h-s1n"><label class="field-label" style="margin-top:8px">Label</label><input type="text" class="field-input" id="h-s1l"></div>
+              <div class="field-group"><label class="field-label">Stat 2 Number</label><input type="text" class="field-input" id="h-s2n"><label class="field-label" style="margin-top:8px">Label</label><input type="text" class="field-input" id="h-s2l"></div>
+              <div class="field-group"><label class="field-label">Stat 3 Number</label><input type="text" class="field-input" id="h-s3n"><label class="field-label" style="margin-top:8px">Label</label><input type="text" class="field-input" id="h-s3l"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FEATURED CAROUSEL -->
+        <div class="section-block">
+          <div class="section-block-header" onclick="toggleSection(this)"><div class="section-block-title"><i class="bi bi-collection-play" style="color:#7c3aed"></i> ③ Featured Drops Carousel (5 slides)</div><i class="bi bi-chevron-down toggle-chevron"></i></div>
+          <div class="section-block-body">
+            <div class="field-row field-row-2">
+              <div class="field-group"><label class="field-label">Section Heading</label><input type="text" class="field-input" id="h-feat-heading"></div>
+              <div class="field-group"><label class="field-label">Accent Word</label><input type="text" class="field-input" id="h-feat-accent"></div>
+            </div>
+            <div class="field-group"><label class="field-label">Subtitle</label><input type="text" class="field-input" id="h-feat-subtitle"></div>
+            <p class="field-hint" style="margin-bottom:14px">Badge is optional — leave blank to hide.</p>
+            <div id="slides-editor"></div>
+          </div>
+        </div>
+
+        <!-- CATEGORIES -->
+        <div class="section-block">
+          <div class="section-block-header" onclick="toggleSection(this)"><div class="section-block-title"><i class="bi bi-grid" style="color:var(--info)"></i> ④ Shop by Category</div><i class="bi bi-chevron-down toggle-chevron"></i></div>
+          <div class="section-block-body">
+            <div class="field-row field-row-2">
+              <div class="field-group"><label class="field-label">Heading</label><input type="text" class="field-input" id="h-cat-heading"></div>
+              <div class="field-group"><label class="field-label">Heading Accent</label><input type="text" class="field-input" id="h-cat-accent"></div>
+            </div>
+            <div class="field-group"><label class="field-label">Subtitle</label><input type="text" class="field-input" id="h-cat-sub"></div>
+            <div class="field-row" style="grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;margin-top:4px">
+              <div class="field-group"><label class="field-label">Card 1 Label</label><input type="text" class="field-input" id="h-cat1-label"><label class="field-label" style="margin-top:8px">Count</label><input type="text" class="field-input" id="h-cat1-count"></div>
+              <div class="field-group"><label class="field-label">Card 2 Label</label><input type="text" class="field-input" id="h-cat2-label"><label class="field-label" style="margin-top:8px">Count</label><input type="text" class="field-input" id="h-cat2-count"></div>
+              <div class="field-group"><label class="field-label">Card 3 Label</label><input type="text" class="field-input" id="h-cat3-label"><label class="field-label" style="margin-top:8px">Count</label><input type="text" class="field-input" id="h-cat3-count"></div>
+              <div class="field-group"><label class="field-label">Card 4 Label</label><input type="text" class="field-input" id="h-cat4-label"><label class="field-label" style="margin-top:8px">Count</label><input type="text" class="field-input" id="h-cat4-count"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NEW ARRIVALS -->
+        <div class="section-block">
+          <div class="section-block-header" onclick="toggleSection(this)"><div class="section-block-title"><i class="bi bi-stars" style="color:#f59e0b"></i> ⑤ New Arrivals Section</div><i class="bi bi-chevron-down toggle-chevron"></i></div>
+          <div class="section-block-body">
+            <div class="field-row field-row-2">
+              <div class="field-group"><label class="field-label">Heading</label><input type="text" class="field-input" id="h-na-heading"></div>
+              <div class="field-group"><label class="field-label">Heading Accent</label><input type="text" class="field-input" id="h-na-accent"></div>
+            </div>
+            <div class="field-group"><label class="field-label">Subtitle</label><input type="text" class="field-input" id="h-na-sub"></div>
+            <div class="preview-box">Products shown here auto-populate from your <a href="products.html" style="color:var(--primary)">Products</a> list.</div>
+          </div>
+        </div>
+
+        <!-- WHY CHOOSE US -->
+        <div class="section-block">
+          <div class="section-block-header" onclick="toggleSection(this)"><div class="section-block-title"><i class="bi bi-patch-check" style="color:var(--accent)"></i> ⑥ Why Choose Us (4 cards)</div><i class="bi bi-chevron-down toggle-chevron"></i></div>
+          <div class="section-block-body">
+            <div class="field-row field-row-2">
+              <div class="field-group"><label class="field-label">Heading</label><input type="text" class="field-input" id="h-why-heading"></div>
+              <div class="field-group"><label class="field-label">Heading Accent</label><input type="text" class="field-input" id="h-why-accent"></div>
+            </div>
+            <div class="field-group"><label class="field-label">Subtitle</label><input type="text" class="field-input" id="h-why-sub"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px">
+              <div style="border:1px solid var(--border);border-radius:var(--radius);padding:14px"><p style="font-size:0.72rem;font-weight:700;color:var(--text-2);text-transform:uppercase;margin-bottom:8px">Card 1</p><div class="field-group" style="margin-bottom:8px"><label class="field-label">Title</label><input type="text" class="field-input" id="h-why1-title"></div><div class="field-group" style="margin-bottom:0"><label class="field-label">Body</label><textarea class="field-textarea" id="h-why1-body" rows="2"></textarea></div></div>
+              <div style="border:1px solid var(--border);border-radius:var(--radius);padding:14px"><p style="font-size:0.72rem;font-weight:700;color:var(--text-2);text-transform:uppercase;margin-bottom:8px">Card 2</p><div class="field-group" style="margin-bottom:8px"><label class="field-label">Title</label><input type="text" class="field-input" id="h-why2-title"></div><div class="field-group" style="margin-bottom:0"><label class="field-label">Body</label><textarea class="field-textarea" id="h-why2-body" rows="2"></textarea></div></div>
+              <div style="border:1px solid var(--border);border-radius:var(--radius);padding:14px"><p style="font-size:0.72rem;font-weight:700;color:var(--text-2);text-transform:uppercase;margin-bottom:8px">Card 3</p><div class="field-group" style="margin-bottom:8px"><label class="field-label">Title</label><input type="text" class="field-input" id="h-why3-title"></div><div class="field-group" style="margin-bottom:0"><label class="field-label">Body</label><textarea class="field-textarea" id="h-why3-body" rows="2"></textarea></div></div>
+              <div style="border:1px solid var(--border);border-radius:var(--radius);padding:14px"><p style="font-size:0.72rem;font-weight:700;color:var(--text-2);text-transform:uppercase;margin-bottom:8px">Card 4</p><div class="field-group" style="margin-bottom:8px"><label class="field-label">Title</label><input type="text" class="field-input" id="h-why4-title"></div><div class="field-group" style="margin-bottom:0"><label class="field-label">Body</label><textarea class="field-textarea" id="h-why4-body" rows="2"></textarea></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STORY TEASER -->
+        <div class="section-block">
+          <div class="section-block-header" onclick="toggleSection(this)"><div class="section-block-title"><i class="bi bi-book" style="color:#7c3aed"></i> ⑦ Our Story Teaser</div><i class="bi bi-chevron-down toggle-chevron"></i></div>
+          <div class="section-block-body">
+            <div class="field-row field-row-2">
+              <div class="field-group"><label class="field-label">Badge Number (e.g. 3+)</label><input type="text" class="field-input" id="h-story-years"></div>
+              <div class="field-group"><label class="field-label">Badge Label</label><input type="text" class="field-input" id="h-story-years-label"></div>
+            </div>
+            <div class="field-group"><label class="field-label">Section Heading</label><input type="text" class="field-input" id="h-story-heading"></div>
+            <div class="field-group"><label class="field-label">Paragraph 1</label><textarea class="field-textarea" id="h-story-p1" rows="3"></textarea></div>
+            <div class="field-group"><label class="field-label">Paragraph 2</label><textarea class="field-textarea" id="h-story-p2" rows="3"></textarea></div>
+            <div class="field-group"><label class="field-label">CTA Button Text</label><input type="text" class="field-input" id="h-story-cta"></div>
+          </div>
+        </div>
+
+        <!-- TESTIMONIALS -->
+        <div class="section-block">
+          <div class="section-block-header" onclick="toggleSection(this)"><div class="section-block-title"><i class="bi bi-chat-quote" style="color:var(--info)"></i> ⑧ Testimonials (6 reviews)</div><i class="bi bi-chevron-down toggle-chevron"></i></div>
+          <div class="section-block-body">
+            <div class="field-row field-row-2">
+              <div class="field-group"><label class="field-label">Heading</label><input type="text" class="field-input" id="h-tm-heading"></div>
+              <div class="field-group"><label class="field-label">Heading Accent</label><input type="text" class="field-input" id="h-tm-accent"></div>
+            </div>
+            <div class="field-group"><label class="field-label">Subtitle</label><input type="text" class="field-input" id="h-tm-sub"></div>
+            <div id="testimonials-editor" style="display:flex;flex-direction:column;gap:12px;margin-top:8px"></div>
+          </div>
+        </div>
+
+        <!-- INSTAGRAM -->
+        <div class="section-block">
+          <div class="section-block-header" onclick="toggleSection(this)"><div class="section-block-title"><i class="bi bi-instagram" style="color:#e1306c"></i> ⑨ Instagram Section</div><i class="bi bi-chevron-down toggle-chevron"></i></div>
+          <div class="section-block-body">
+            <div class="field-row field-row-2">
+              <div class="field-group"><label class="field-label">Heading</label><input type="text" class="field-input" id="h-ig-heading"></div>
+              <div class="field-group"><label class="field-label">Instagram Handle (no @)</label><input type="text" class="field-input" id="h-ig-handle"></div>
+            </div>
+            <div class="field-group"><label class="field-label">Subtitle</label><input type="text" class="field-input" id="h-ig-sub"></div>
+            <div class="field-group"><label class="field-label">Button Text</label><input type="text" class="field-input" id="h-ig-cta"></div>
+          </div>
+        </div>
+
+        <!-- NEWSLETTER -->
+        <div class="section-block">
+          <div class="section-block-header" onclick="toggleSection(this)"><div class="section-block-title"><i class="bi bi-envelope" style="color:var(--primary)"></i> ⑩ Newsletter Section</div><i class="bi bi-chevron-down toggle-chevron"></i></div>
+          <div class="section-block-body">
+            <div class="field-row field-row-2">
+              <div class="field-group"><label class="field-label">Heading</label><input type="text" class="field-input" id="h-nl-heading"></div>
+              <div class="field-group"><label class="field-label">Heading Accent Word</label><input type="text" class="field-input" id="h-nl-accent"></div>
+            </div>
+            <div class="field-group"><label class="field-label">Subtitle</label><input type="text" class="field-input" id="h-nl-sub"></div>
+            <div class="field-group"><label class="field-label">Privacy Note</label><input type="text" class="field-input" id="h-nl-privacy"></div>
+          </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="section-block">
+          <div class="section-block-header" onclick="toggleSection(this)"><div class="section-block-title"><i class="bi bi-layout-text-window-reverse" style="color:var(--text-2)"></i> ⑪ Footer Text</div><i class="bi bi-chevron-down toggle-chevron"></i></div>
+          <div class="section-block-body">
+            <div class="field-group"><label class="field-label">Brand Description (under logo)</label><textarea class="field-textarea" id="h-footer-desc" rows="2"></textarea></div>
+            <div class="field-row field-row-2">
+              <div class="field-group"><label class="field-label">Copyright Text</label><input type="text" class="field-input" id="h-footer-copy"></div>
+              <div class="field-group"><label class="field-label">"Made with ❤" Text</label><input type="text" class="field-input" id="h-footer-made"></div>
+            </div>
+            <p class="field-hint" style="margin-bottom:12px">Social media — paste full URLs</p>
+            <div class="field-row field-row-3">
+              <div class="field-group"><label class="field-label">Instagram URL</label><input type="url" class="field-input" id="h-footer-ig"></div>
+              <div class="field-group"><label class="field-label">Facebook URL</label><input type="url" class="field-input" id="h-footer-fb"></div>
+              <div class="field-group"><label class="field-label">TikTok URL</label><input type="url" class="field-input" id="h-footer-tt"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="toast-stack"></div>
+<script src="assets/js/admin.js"></script>
+<script>
+  requireAuth();
+  initSidebar('content-home.html');
+  function toggleSection(h){const b=h.nextElementSibling,c=h.querySelector('.toggle-chevron'),open=!b.classList.contains('hidden');b.classList.toggle('hidden',open);c.style.transform=open?'rotate(-90deg)':'rotate(0)';}
+  function buildSlidesEditor(f){const el=document.getElementById('slides-editor');el.innerHTML='';for(let i=1;i<=5;i++){el.innerHTML+=`<div style="border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:10px"><div style="font-size:0.72rem;font-weight:700;color:var(--text-2);margin-bottom:8px;text-transform:uppercase">Slide ${i}</div><div style="display:grid;grid-template-columns:1fr 2fr;gap:10px;margin-bottom:10px"><div class="field-group" style="margin-bottom:0"><label class="field-label">Badge</label><input type="text" class="field-input" id="h-sl${i}-badge" value="${esc(f['slide'+i+'Badge']||'')}"></div><div class="field-group" style="margin-bottom:0"><label class="field-label">Title</label><input type="text" class="field-input" id="h-sl${i}-title" value="${esc(f['slide'+i+'Title']||'')}"></div></div><div class="field-group" style="margin-bottom:0"><label class="field-label">Price &amp; Details</label><input type="text" class="field-input" id="h-sl${i}-detail" value="${esc(f['slide'+i+'Detail']||'')}"></div></div>`;}}
+  function buildTestimonialEditor(tm){const el=document.getElementById('testimonials-editor');el.innerHTML='';for(let i=1;i<=6;i++){el.innerHTML+=`<div style="border:1px solid var(--border);border-radius:var(--radius);padding:14px"><div style="font-size:0.72rem;font-weight:700;color:var(--text-2);margin-bottom:8px;text-transform:uppercase">Review ${i}</div><div class="field-group" style="margin-bottom:8px"><label class="field-label">Quote</label><textarea class="field-textarea" id="h-t${i}-quote" rows="2">${esc(tm['t'+i+'Quote']||'')}</textarea></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div class="field-group" style="margin-bottom:0"><label class="field-label">Name</label><input type="text" class="field-input" id="h-t${i}-name" value="${esc(tm['t'+i+'Name']||'')}"></div><div class="field-group" style="margin-bottom:0"><label class="field-label">Location</label><input type="text" class="field-input" id="h-t${i}-loc" value="${esc(tm['t'+i+'Location']||'')}"></div></div></div>`;}}
+  const FIELDS={'h-eyebrow':['home','hero','eyebrow'],'h-heading1':['home','hero','heading1'],'h-heading2':['home','hero','heading2'],'h-subtitle':['home','hero','subtitle'],'h-cta1':['home','hero','ctaPrimary'],'h-cta2':['home','hero','ctaSecondary'],'h-trust-rating':['home','hero','trustRating'],'h-trust-quote':['home','hero','trustQuote'],'h-trust-author':['home','hero','trustAuthor'],'h-s1n':['home','hero','stat1Number'],'h-s1l':['home','hero','stat1Label'],'h-s2n':['home','hero','stat2Number'],'h-s2l':['home','hero','stat2Label'],'h-s3n':['home','hero','stat3Number'],'h-s3l':['home','hero','stat3Label'],'h-feat-heading':['home','featured','heading'],'h-feat-accent':['home','featured','headingAccent'],'h-feat-subtitle':['home','featured','subtitle'],'h-cat-heading':['home','categories','heading'],'h-cat-accent':['home','categories','headingAccent'],'h-cat-sub':['home','categories','subtitle'],'h-cat1-label':['home','categories','cat1Label'],'h-cat1-count':['home','categories','cat1Count'],'h-cat2-label':['home','categories','cat2Label'],'h-cat2-count':['home','categories','cat2Count'],'h-cat3-label':['home','categories','cat3Label'],'h-cat3-count':['home','categories','cat3Count'],'h-cat4-label':['home','categories','cat4Label'],'h-cat4-count':['home','categories','cat4Count'],'h-na-heading':['home','newArrivals','heading'],'h-na-accent':['home','newArrivals','headingAccent'],'h-na-sub':['home','newArrivals','subtitle'],'h-why-heading':['home','why','heading'],'h-why-accent':['home','why','headingAccent'],'h-why-sub':['home','why','subtitle'],'h-why1-title':['home','why','card1Title'],'h-why1-body':['home','why','card1Body'],'h-why2-title':['home','why','card2Title'],'h-why2-body':['home','why','card2Body'],'h-why3-title':['home','why','card3Title'],'h-why3-body':['home','why','card3Body'],'h-why4-title':['home','why','card4Title'],'h-why4-body':['home','why','card4Body'],'h-story-years':['home','story','badgeYears'],'h-story-years-label':['home','story','badgeYearsLabel'],'h-story-heading':['home','story','heading'],'h-story-p1':['home','story','body1'],'h-story-p2':['home','story','body2'],'h-story-cta':['home','story','cta'],'h-tm-heading':['home','testimonials','heading'],'h-tm-accent':['home','testimonials','headingAccent'],'h-tm-sub':['home','testimonials','subtitle'],'h-ig-heading':['home','instagram','heading'],'h-ig-handle':['home','instagram','handle'],'h-ig-sub':['home','instagram','subtitle'],'h-ig-cta':['home','instagram','ctaText'],'h-nl-heading':['home','newsletter','heading'],'h-nl-accent':['home','newsletter','headingAccent'],'h-nl-sub':['home','newsletter','subtitle'],'h-nl-privacy':['home','newsletter','privacyNote'],'h-footer-desc':['home','footer','description'],'h-footer-copy':['home','footer','copyright'],'h-footer-made':['home','footer','madeIn'],'h-footer-ig':['home','footer','instagram'],'h-footer-fb':['home','footer','facebook'],'h-footer-tt':['home','footer','tiktok']};
+  function g(o,k){return k.reduce((a,b)=>(a&&a[b]!==undefined?a[b]:''),o);}
+  function s(o,k,v){const l=k[k.length-1];k.slice(0,-1).reduce((a,b)=>{if(!a[b])a[b]={};return a[b];},o)[l]=v;}
+  function loadAll(){const c=Store.getContent();buildSlidesEditor(c.home&&c.home.featured||{});buildTestimonialEditor(c.home&&c.home.testimonials||{});Object.entries(FIELDS).forEach(([id,path])=>{const el=document.getElementById(id);if(el)el.value=g(c,path);});}
+  document.getElementById('btn-save').addEventListener('click',()=>{const c=Store.getContent();Object.entries(FIELDS).forEach(([id,path])=>{const el=document.getElementById(id);if(el)s(c,path,el.value.trim());});for(let i=1;i<=5;i++){['badge','title','detail'].forEach(f=>{const el=document.getElementById('h-sl'+i+'-'+f);if(el)s(c,['home','featured','slide'+i+f.charAt(0).toUpperCase()+f.slice(1)],el.value.trim());});}for(let i=1;i<=6;i++){const q=document.getElementById('h-t'+i+'-quote'),n=document.getElementById('h-t'+i+'-name'),l=document.getElementById('h-t'+i+'-loc');if(q)s(c,['home','testimonials','t'+i+'Quote'],q.value.trim());if(n)s(c,['home','testimonials','t'+i+'Name'],n.value.trim());if(l)s(c,['home','testimonials','t'+i+'Location'],l.value.trim());}Store.saveContent(c);AdminToast.show('Home page saved!','success');});
+  document.getElementById('btn-reset').addEventListener('click',()=>{if(!confirm('Reset home page content to defaults?'))return;const c=Store.getContent();c.home=Store._defaultContent().home;Store.saveContent(c);loadAll();AdminToast.show('Reset to defaults.','success');});
+  loadAll();
+</script>
+</body>
+</html>
