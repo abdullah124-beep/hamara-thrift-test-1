@@ -619,7 +619,7 @@ function buildProductCard(product, link = 'product-detail.html') {
           <a href="${link}?id=${product.id}" class="text-decoration-none">
             <h3 class="product-card-title">${product.title}</h3>
           </a>
-          <p class="product-card-size">US ${product.size} &nbsp;·&nbsp; ${product.stock > 0 ? `${product.stock} left` : 'Out of Stock'}</p>
+          <p class="product-card-size">US ${product.size}</p>
           <div class="product-card-footer">
             <div class="product-card-price">
               <span class="pkr">PKR</span>${product.price.toLocaleString()}
@@ -874,18 +874,9 @@ function initProductDetail() {
   document.getElementById('pd-description').textContent = product.description;
   document.getElementById('pd-size-display').textContent = `US ${product.size}`;
 
-  // Stock status
-  const stockEl = document.getElementById('pd-stock');
-  if (product.stock === 0) {
-    stockEl.innerHTML = `<span class="stock-dot"></span> Out of Stock`;
-    stockEl.className = 'stock-badge out-of-stock';
-  } else if (product.stock <= 2) {
-    stockEl.innerHTML = `<span class="stock-dot"></span> Only ${product.stock} left!`;
-    stockEl.className = 'stock-badge low-stock';
-  } else {
-    stockEl.innerHTML = `<span class="stock-dot"></span> In Stock (${product.stock} available)`;
-    stockEl.className = 'stock-badge in-stock';
-  }
+  // Show size in the new size tag
+  const sizeTag = document.getElementById('pd-size-tag');
+  if (sizeTag) sizeTag.textContent = product.size;
 
   // Breadcrumb
   const bc = document.getElementById('pd-breadcrumb-title');
@@ -928,41 +919,38 @@ function initProductDetail() {
     modal.show();
   });
 
-  // Size selector
-  const sizeSel = document.getElementById('pd-size-selector');
-  let selectedSize = product.size;
-  if (sizeSel) {
-    const sizes = [7, 8, 9, 10, 11, 12, 13];
-    sizeSel.innerHTML = sizes.map(s => `
-      <button class="size-option ${s === product.size ? 'selected' : ''}" data-size="${s}"
-        ${s !== product.size ? 'style="opacity:0.4"' : ''}>US ${s}</button>`).join('');
-    sizeSel.querySelectorAll('.size-option').forEach(btn => {
-      btn.addEventListener('click', () => {
-        sizeSel.querySelectorAll('.size-option').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-        selectedSize = parseInt(btn.dataset.size);
-      });
-    });
+  // Size guide modal
+  const sizeGuideModal = document.getElementById('size-guide-modal');
+  document.getElementById('btn-size-guide')?.addEventListener('click', () => {
+    if (sizeGuideModal) sizeGuideModal.style.display = 'flex';
+  });
+  document.getElementById('size-guide-close')?.addEventListener('click', () => {
+    if (sizeGuideModal) sizeGuideModal.style.display = 'none';
+  });
+  sizeGuideModal?.addEventListener('click', (e) => {
+    if (e.target === sizeGuideModal) sizeGuideModal.style.display = 'none';
+  });
+
+  // Add to cart — thrift store: one pair, fixed size
+  const addBtn = document.getElementById('pd-add-to-cart');
+  const alreadyInCart = Cart.get().some(i => i.id === product.id);
+  if (alreadyInCart && addBtn) {
+    addBtn.innerHTML = '<i class="bi bi-bag-check"></i> In Cart';
+    addBtn.style.background = 'var(--secondary)';
   }
 
-  // Quantity selector
-  let qty = 1;
-  const qtyVal = document.getElementById('qty-value');
-  document.getElementById('qty-minus')?.addEventListener('click', () => {
-    if (qty > 1) { qty--; qtyVal.value = qty; }
-  });
-  document.getElementById('qty-plus')?.addEventListener('click', () => {
-    if (qty < 5) { qty++; qtyVal.value = qty; }
-  });
-
-  // Add to cart
-  document.getElementById('pd-add-to-cart')?.addEventListener('click', () => {
-    if (product.stock === 0) { Toast.show('Sorry, this item is out of stock.', 'error'); return; }
-    const result = Cart.add(product.id, selectedSize, 1);
+  addBtn?.addEventListener('click', () => {
+    const result = Cart.add(product.id, product.size, 1);
     if (result === 'duplicate') {
       Toast.show('Already in your cart! <a href="cart.html" style="color:var(--accent);text-decoration:underline;font-weight:700">View Cart</a>', 'info');
     } else {
       CartToast.show(product.title);
+      addBtn.innerHTML = '<i class="bi bi-check"></i> Added';
+      addBtn.style.background = 'var(--accent)';
+      setTimeout(() => {
+        addBtn.innerHTML = '<i class="bi bi-bag-check"></i> In Cart';
+        addBtn.style.background = 'var(--secondary)';
+      }, 1500);
     }
   });
 

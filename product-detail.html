@@ -103,11 +103,6 @@
 
           <div id="pd-price" class="product-detail-price">PKR —</div>
 
-          <!-- Stock -->
-          <div id="pd-stock" class="stock-badge in-stock mb-4">
-            <span class="stock-dot"></span> In Stock
-          </div>
-
           <!-- Details row -->
           <div class="product-detail-info-row mb-4">
             <div class="info-row-item">
@@ -131,39 +126,24 @@
           <!-- Description -->
           <p class="product-desc mb-4" id="pd-description">Loading product details...</p>
 
-          <!-- Size Selector -->
-          <div class="mb-4">
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <label class="fw-bold" style="font-family:'Poppins',sans-serif;font-size:0.9rem">Select Size (US)</label>
-              <a href="#" style="font-size:0.8rem;color:var(--primary)">Size Guide <i class="bi bi-rulers"></i></a>
+          <!-- Size display + guide -->
+          <div class="mb-4 d-flex align-items-center gap-3">
+            <div style="background:var(--bg-light);border-radius:var(--radius);padding:10px 20px;font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem">
+              US <span id="pd-size-tag">—</span>
             </div>
-            <div class="size-selector" id="pd-size-selector">
-              <!-- Populated by JS -->
-            </div>
-            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:8px">
-              <i class="bi bi-info-circle"></i> Original size pre-selected. Other sizes are for reference only.
-            </p>
+            <button type="button" class="btn-size-guide" id="btn-size-guide" style="font-size:0.82rem;color:var(--primary);background:none;border:1.5px solid var(--primary);border-radius:6px;padding:8px 14px;font-family:'Poppins',sans-serif;font-weight:600;cursor:pointer">
+              <i class="bi bi-rulers"></i> Size Guide
+            </button>
           </div>
 
-          <!-- Quantity -->
-          <div class="mb-4">
-            <label class="fw-bold d-block mb-2" style="font-family:'Poppins',sans-serif;font-size:0.9rem">Quantity</label>
-            <div class="qty-selector">
-              <button class="qty-btn" id="qty-minus" aria-label="Decrease quantity">−</button>
-              <input type="text" class="qty-value" id="qty-value" value="1" readonly aria-label="Quantity">
-              <button class="qty-btn" id="qty-plus" aria-label="Increase quantity">+</button>
-            </div>
-            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:6px">Maximum 5 per order</p>
-          </div>
+
 
           <!-- CTA Buttons -->
           <div class="d-flex gap-3 flex-wrap mb-4">
             <button id="pd-add-to-cart" class="btn-primary-brand flex-grow-1 justify-content-center" style="padding:16px 24px;font-size:1rem;min-height:52px">
               <i class="bi bi-bag-plus"></i> Add to Cart
             </button>
-            <button class="product-card-wishlist" style="position:static;width:52px;height:52px;border:1.5px solid var(--border)" aria-label="Add to wishlist">
-              <i class="bi bi-heart"></i>
-            </button>
+
           </div>
 
           <!-- Delivery info -->
@@ -171,22 +151,22 @@
             <div class="d-flex gap-3 mb-2">
               <i class="bi bi-truck" style="color:var(--primary);font-size:1.1rem"></i>
               <div>
-                <strong style="font-family:'Poppins',sans-serif">Free delivery in Multan</strong>
-                <span style="color:var(--text-muted)"> — Same day if ordered before 2pm</span>
+                <strong style="font-family:'Poppins',sans-serif">Nationwide delivery via TCS</strong>
+                <span style="color:var(--text-muted)"> — PKR 250–400, est. 3–4 working days</span>
               </div>
             </div>
             <div class="d-flex gap-3 mb-2">
               <i class="bi bi-arrow-repeat" style="color:var(--primary);font-size:1.1rem"></i>
               <div>
-                <strong style="font-family:'Poppins',sans-serif">7-day returns</strong>
-                <span style="color:var(--text-muted)"> — Hassle-free returns if not as described</span>
+                <strong style="font-family:'Poppins',sans-serif">3-day exchange policy</strong>
+                <span style="color:var(--text-muted)"> — Exchange if not as described. No cash refunds. <a href="exchange-policy.html" style="color:var(--primary)">Full policy →</a></span>
               </div>
             </div>
             <div class="d-flex gap-3">
               <i class="bi bi-shield-check" style="color:var(--primary);font-size:1.1rem"></i>
               <div>
-                <strong style="font-family:'Poppins',sans-serif">Authenticity verified</strong>
-                <span style="color:var(--text-muted)"> — Every pair is authenticated by our team</span>
+                <strong style="font-family:'Poppins',sans-serif">Honestly graded</strong>
+                <span style="color:var(--text-muted)"> — Every pair is personally inspected and photographed by Abdullah</span>
               </div>
             </div>
           </div>
@@ -218,6 +198,50 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- ============ SIZE GUIDE MODAL ============ -->
+  <div id="size-guide-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1100;align-items:center;justify-content:center;padding:20px">
+    <div style="background:#fff;border-radius:16px;max-width:680px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3)">
+      <div style="padding:18px 24px;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:1">
+        <span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:1rem">Sneaker Size Guide</span>
+        <button id="size-guide-close" style="background:none;border:none;font-size:1.4rem;color:#94a3b8;cursor:pointer;padding:4px;line-height:1">&times;</button>
+      </div>
+      <div style="padding:20px 24px">
+        <p style="font-size:0.85rem;color:#64748b;margin-bottom:16px">All sizes listed on Hamara Thrift are in <strong>US sizing</strong>. Use the table below to convert to your local size.</p>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:0.82rem;text-align:center">
+            <thead>
+              <tr style="background:#060644;color:#fff">
+                <th style="padding:10px 8px">US</th>
+                <th style="padding:10px 8px">UK</th>
+                <th style="padding:10px 8px">EU</th>
+                <th style="padding:10px 8px">CM (foot)</th>
+                <th style="padding:10px 8px">Gender</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background:#f8fafc"><td style="padding:9px 8px;border-bottom:1px solid #e2e8f0">5</td><td>4</td><td>37.5</td><td>23 cm</td><td style="color:#7c3aed">Women</td></tr>
+              <tr><td style="padding:9px 8px;border-bottom:1px solid #e2e8f0">5.5</td><td>4.5</td><td>38</td><td>23.5 cm</td><td style="color:#7c3aed">Women</td></tr>
+              <tr style="background:#f8fafc"><td style="padding:9px 8px;border-bottom:1px solid #e2e8f0">6</td><td>5</td><td>38.5</td><td>24 cm</td><td style="color:#7c3aed">Women</td></tr>
+              <tr><td style="padding:9px 8px;border-bottom:1px solid #e2e8f0">6.5</td><td>5.5</td><td>39</td><td>24.5 cm</td><td style="color:#7c3aed">Women</td></tr>
+              <tr style="background:#f8fafc"><td style="padding:9px 8px;border-bottom:1px solid #e2e8f0">7</td><td>6</td><td>40</td><td>25 cm</td><td style="color:#1d4ed8">Men / Women</td></tr>
+              <tr><td style="padding:9px 8px;border-bottom:1px solid #e2e8f0">7.5</td><td>6.5</td><td>40.5</td><td>25.5 cm</td><td style="color:#1d4ed8">Men / Women</td></tr>
+              <tr style="background:#f8fafc"><td style="padding:9px 8px;border-bottom:1px solid #e2e8f0">8</td><td>7</td><td>41</td><td>26 cm</td><td style="color:#1d4ed8">Men / Women</td></tr>
+              <tr><td style="padding:9px 8px;border-bottom:1px solid #e2e8f0">8.5</td><td>7.5</td><td>42</td><td>26.5 cm</td><td style="color:#1d4ed8">Men</td></tr>
+              <tr style="background:#f8fafc"><td style="padding:9px 8px;border-bottom:1px solid #e2e8f0">9</td><td>8</td><td>42.5</td><td>27 cm</td><td style="color:#1d4ed8">Men</td></tr>
+              <tr><td style="padding:9px 8px;border-bottom:1px solid #e2e8f0">9.5</td><td>8.5</td><td>43</td><td>27.5 cm</td><td style="color:#1d4ed8">Men</td></tr>
+              <tr style="background:#f8fafc"><td style="padding:9px 8px;border-bottom:1px solid #e2e8f0">10</td><td>9</td><td>44</td><td>28 cm</td><td style="color:#1d4ed8">Men</td></tr>
+              <tr><td style="padding:9px 8px;border-bottom:1px solid #e2e8f0">10.5</td><td>9.5</td><td>44.5</td><td>28.5 cm</td><td style="color:#1d4ed8">Men</td></tr>
+              <tr style="background:#f8fafc"><td style="padding:9px 8px;border-bottom:1px solid #e2e8f0">11</td><td>10</td><td>45</td><td>29 cm</td><td style="color:#1d4ed8">Men</td></tr>
+              <tr><td style="padding:9px 8px;border-bottom:1px solid #e2e8f0">11.5</td><td>10.5</td><td>45.5</td><td>29.5 cm</td><td style="color:#1d4ed8">Men</td></tr>
+              <tr style="background:#f8fafc"><td style="padding:9px 8px">12</td><td>11</td><td>46</td><td>30 cm</td><td style="color:#1d4ed8">Men</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.78rem;color:#94a3b8;margin-top:14px"><i class="bi bi-info-circle me-1"></i>Sizes may vary slightly by brand. If unsure, message us on WhatsApp before ordering.</p>
+      </div>
     </div>
   </div>
 

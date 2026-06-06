@@ -2319,3 +2319,81 @@ img { max-width: 100%; height: auto; }
   justify-content: center !important;
   text-align: center !important;
 }
+
+/* ============================================================
+   PRODUCT CARD FOOTER — price + button layout
+   Desktop: side by side  |  Mobile: stacked vertically
+   ============================================================ */
+
+/* Desktop base — side by side */
+.product-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Mobile (all phones) — stack vertically so nothing truncates */
+@media (max-width: 767.98px) {
+  .product-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .btn-add-cart {
+    width: 100%;
+    justify-content: center;
+    padding: 9px 10px;
+    font-size: 0.78rem;
+  }
+}
+
+/* Extra narrow (≤ 380px) — slightly tighter vertical padding */
+@media (max-width: 380px) {
+  .btn-add-cart {
+    padding: 8px 10px;
+    font-size: 0.74rem;
+  }
+  .product-card-price { font-size: 0.92rem; }
+}
+
+/* ============================================================
+   TESTIMONIALS — fixed card height, clamped quote text
+   Cards never grow/shrink → carousel height stays constant
+   ============================================================ */
+.testimonials-section #testimonialsCarousel .carousel-item {
+  /* All slides same height — set by tallest card */
+}
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 220px;
+}
+.testimonial-quote {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;      /* max 4 lines of text */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;                    /* fills remaining height so author pins to bottom */
+}
+.testimonial-author {
+  margin-top: auto;           /* always at bottom of card */
+  padding-top: 16px;
+}
+/* Make all carousel items equal height via inner flex */
+#testimonialsCarousel .carousel-inner {
+  display: flex;
+}
+#testimonialsCarousel .carousel-item {
+  flex: 0 0 100%;
+}
+#testimonialsCarousel .row {
+  align-items: stretch;
+}
+#testimonialsCarousel .col-md-4 {
+  display: flex;
+}
+#testimonialsCarousel .testimonial-card {
+  width: 100%;
+}
